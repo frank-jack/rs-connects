@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14CAD4D12A09491800116B07 /* RSConnectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4D02A09491800116B07 /* RSConnectsApp.swift */; };
+		14CAD4D32A09491800116B07 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4D22A09491800116B07 /* ContentView.swift */; };
+		14CAD4D52A09491B00116B07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14CAD4D42A09491B00116B07 /* Assets.xcassets */; };
+		14CAD4D82A09491B00116B07 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14CAD4D72A09491B00116B07 /* Preview Assets.xcassets */; };
+		14CAD4E32A09491C00116B07 /* RSConnectsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4E22A09491C00116B07 /* RSConnectsTests.swift */; };
+		14CAD4ED2A09491C00116B07 /* RSConnectsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4EC2A09491C00116B07 /* RSConnectsUITests.swift */; };
+		14CAD4EF2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14CAD4DF2A09491C00116B07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14CAD4C52A09491800116B07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14CAD4CC2A09491800116B07;
+			remoteInfo = RSConnects;
+		};
+		14CAD4E92A09491C00116B07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14CAD4C52A09491800116B07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14CAD4CC2A09491800116B07;
+			remoteInfo = RSConnects;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		14CAD4CD2A09491800116B07 /* RSConnects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSConnects.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CAD4D02A09491800116B07 /* RSConnectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsApp.swift; sourceTree = "<group>"; };
+		14CAD4D22A09491800116B07 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		14CAD4D42A09491B00116B07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14CAD4D72A09491B00116B07 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		14CAD4D92A09491B00116B07 /* RSConnects.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSConnects.entitlements; sourceTree = "<group>"; };
+		14CAD4DE2A09491C00116B07 /* RSConnectsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSConnectsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CAD4E22A09491C00116B07 /* RSConnectsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsTests.swift; sourceTree = "<group>"; };
+		14CAD4E82A09491C00116B07 /* RSConnectsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSConnectsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CAD4EC2A09491C00116B07 /* RSConnectsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsUITests.swift; sourceTree = "<group>"; };
+		14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14CAD4CA2A09491800116B07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CAD4DB2A09491C00116B07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CAD4E52A09491C00116B07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14CAD4C42A09491800116B07 = {
+			isa = PBXGroup;
+			children = (
+				14CAD4CF2A09491800116B07 /* RSConnects */,
+				14CAD4E12A09491C00116B07 /* RSConnectsTests */,
+				14CAD4EB2A09491C00116B07 /* RSConnectsUITests */,
+				14CAD4CE2A09491800116B07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14CAD4CE2A09491800116B07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14CAD4CD2A09491800116B07 /* RSConnects.app */,
+				14CAD4DE2A09491C00116B07 /* RSConnectsTests.xctest */,
+				14CAD4E82A09491C00116B07 /* RSConnectsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14CAD4CF2A09491800116B07 /* RSConnects */ = {
+			isa = PBXGroup;
+			children = (
+				14CAD4D02A09491800116B07 /* RSConnectsApp.swift */,
+				14CAD4D22A09491800116B07 /* ContentView.swift */,
+				14CAD4D42A09491B00116B07 /* Assets.xcassets */,
+				14CAD4D92A09491B00116B07 /* RSConnects.entitlements */,
+				14CAD4D62A09491B00116B07 /* Preview Content */,
+			);
+			path = RSConnects;
+			sourceTree = "<group>";
+		};
+		14CAD4D62A09491B00116B07 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				14CAD4D72A09491B00116B07 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		14CAD4E12A09491C00116B07 /* RSConnectsTests */ = {
+			isa = PBXGroup;
+			children = (
+				14CAD4E22A09491C00116B07 /* RSConnectsTests.swift */,
+			);
+			path = RSConnectsTests;
+			sourceTree = "<group>";
+		};
+		14CAD4EB2A09491C00116B07 /* RSConnectsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				14CAD4EC2A09491C00116B07 /* RSConnectsUITests.swift */,
+				14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */,
+			);
+			path = RSConnectsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14CAD4CC2A09491800116B07 /* RSConnects */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14CAD4F22A09491C00116B07 /* Build configuration list for PBXNativeTarget "RSConnects" */;
+			buildPhases = (
+				14CAD4C92A09491800116B07 /* Sources */,
+				14CAD4CA2A09491800116B07 /* Frameworks */,
+				14CAD4CB2A09491800116B07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RSConnects;
+			productName = RSConnects;
+			productReference = 14CAD4CD2A09491800116B07 /* RSConnects.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14CAD4DD2A09491C00116B07 /* RSConnectsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14CAD4F52A09491C00116B07 /* Build configuration list for PBXNativeTarget "RSConnectsTests" */;
+			buildPhases = (
+				14CAD4DA2A09491C00116B07 /* Sources */,
+				14CAD4DB2A09491C00116B07 /* Frameworks */,
+				14CAD4DC2A09491C00116B07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14CAD4E02A09491C00116B07 /* PBXTargetDependency */,
+			);
+			name = RSConnectsTests;
+			productName = RSConnectsTests;
+			productReference = 14CAD4DE2A09491C00116B07 /* RSConnectsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		14CAD4E72A09491C00116B07 /* RSConnectsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14CAD4F82A09491C00116B07 /* Build configuration list for PBXNativeTarget "RSConnectsUITests" */;
+			buildPhases = (
+				14CAD4E42A09491C00116B07 /* Sources */,
+				14CAD4E52A09491C00116B07 /* Frameworks */,
+				14CAD4E62A09491C00116B07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14CAD4EA2A09491C00116B07 /* PBXTargetDependency */,
+			);
+			name = RSConnectsUITests;
+			productName = RSConnectsUITests;
+			productReference = 14CAD4E82A09491C00116B07 /* RSConnectsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14CAD4C52A09491800116B07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					14CAD4CC2A09491800116B07 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					14CAD4DD2A09491C00116B07 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 14CAD4CC2A09491800116B07;
+					};
+					14CAD4E72A09491C00116B07 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 14CAD4CC2A09491800116B07;
+					};
+				};
+			};
+			buildConfigurationList = 14CAD4C82A09491800116B07 /* Build configuration list for PBXProject "RSConnects" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14CAD4C42A09491800116B07;
+			productRefGroup = 14CAD4CE2A09491800116B07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14CAD4CC2A09491800116B07 /* RSConnects */,
+				14CAD4DD2A09491C00116B07 /* RSConnectsTests */,
+				14CAD4E72A09491C00116B07 /* RSConnectsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14CAD4CB2A09491800116B07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CAD4D82A09491B00116B07 /* Preview Assets.xcassets in Resources */,
+				14CAD4D52A09491B00116B07 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CAD4DC2A09491C00116B07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CAD4E62A09491C00116B07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14CAD4C92A09491800116B07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CAD4D32A09491800116B07 /* ContentView.swift in Sources */,
+				14CAD4D12A09491800116B07 /* RSConnectsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CAD4DA2A09491C00116B07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CAD4E32A09491C00116B07 /* RSConnectsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CAD4E42A09491C00116B07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CAD4EF2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift in Sources */,
+				14CAD4ED2A09491C00116B07 /* RSConnectsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14CAD4E02A09491C00116B07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14CAD4CC2A09491800116B07 /* RSConnects */;
+			targetProxy = 14CAD4DF2A09491C00116B07 /* PBXContainerItemProxy */;
+		};
+		14CAD4EA2A09491C00116B07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14CAD4CC2A09491800116B07 /* RSConnects */;
+			targetProxy = 14CAD4E92A09491C00116B07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		14CAD4F02A09491C00116B07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		14CAD4F12A09491C00116B07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		14CAD4F32A09491C00116B07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RSConnects/RSConnects.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RSConnects/Preview Content\"";
+				DEVELOPMENT_TEAM = FYNP7NNG5M;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnects;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		14CAD4F42A09491C00116B07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RSConnects/RSConnects.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RSConnects/Preview Content\"";
+				DEVELOPMENT_TEAM = FYNP7NNG5M;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnects;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		14CAD4F62A09491C00116B07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FYNP7NNG5M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnectsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RSConnects.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RSConnects";
+			};
+			name = Debug;
+		};
+		14CAD4F72A09491C00116B07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FYNP7NNG5M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnectsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RSConnects.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RSConnects";
+			};
+			name = Release;
+		};
+		14CAD4F92A09491C00116B07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FYNP7NNG5M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnectsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = RSConnects;
+			};
+			name = Debug;
+		};
+		14CAD4FA2A09491C00116B07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FYNP7NNG5M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnectsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = RSConnects;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14CAD4C82A09491800116B07 /* Build configuration list for PBXProject "RSConnects" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CAD4F02A09491C00116B07 /* Debug */,
+				14CAD4F12A09491C00116B07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14CAD4F22A09491C00116B07 /* Build configuration list for PBXNativeTarget "RSConnects" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CAD4F32A09491C00116B07 /* Debug */,
+				14CAD4F42A09491C00116B07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14CAD4F52A09491C00116B07 /* Build configuration list for PBXNativeTarget "RSConnectsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CAD4F62A09491C00116B07 /* Debug */,
+				14CAD4F72A09491C00116B07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14CAD4F82A09491C00116B07 /* Build configuration list for PBXNativeTarget "RSConnectsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CAD4F92A09491C00116B07 /* Debug */,
+				14CAD4FA2A09491C00116B07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14CAD4C52A09491800116B07 /* Project object */;
+}
