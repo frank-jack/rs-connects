@@ -1,0 +1,10 @@
+{
+  "resourceName": "RSConnectsUserDataStorage",
+  "tableName": "RSConnectsUserDataStorage",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-rsconnects-dev-112010-authRole",
+      "UnauthRoleArn": "arn:aws:iam::417990662395:role/amplify-rsconnects-dev-112010-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::417990662395:role/amplify-rsconnects-dev-112010-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
+      "UnauthRoleName": "amplify-rsconnects-dev-112010-unauthRole",
+      "StackName": "amplify-rsconnects-dev-112010",
+      "StackId": "arn:aws:cloudformation:us-east-1:417990662395:stack/amplify-rsconnects-dev-112010/d3bbc2e0-edb3-11ed-bb0d-127d5a85cead",
+      "AmplifyAppId": "d2hdxl5xob7pv8"
+    },
+    "categories": {
+      "auth": {
+        "rsconnects318cc322": {}
+      },
+      "function": {
+        "rsConnectsUserData": {
+          "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
+          "s3Key": "amplify-builds/rsConnectsUserData-2b42773673524a4c5266-build.zip"
+        }
+      }
+    }
+  }
+}

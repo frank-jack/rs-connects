@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/userData": {
+      "name": "/userData",
+      "lambdaFunction": "rsConnectsUserData",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

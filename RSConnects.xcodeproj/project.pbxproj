@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14832A652A0A98D600F19B3C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A642A0A98D600F19B3C /* Session.swift */; };
+		14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A662A0A98EC00F19B3C /* SignIn.swift */; };
+		14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A682A0A98FC00F19B3C /* SignUp.swift */; };
+		14832A6B2A0A990600F19B3C /* Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A6A2A0A990600F19B3C /* Reset.swift */; };
+		14832A6D2A0A991300F19B3C /* Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A6C2A0A991300F19B3C /* Confirm.swift */; };
 		14CAD4D12A09491800116B07 /* RSConnectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4D02A09491800116B07 /* RSConnectsApp.swift */; };
 		14CAD4D32A09491800116B07 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4D22A09491800116B07 /* ContentView.swift */; };
 		14CAD4D52A09491B00116B07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14CAD4D42A09491B00116B07 /* Assets.xcassets */; };
@@ -14,6 +19,13 @@
 		14CAD4E32A09491C00116B07 /* RSConnectsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4E22A09491C00116B07 /* RSConnectsTests.swift */; };
 		14CAD4ED2A09491C00116B07 /* RSConnectsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4EC2A09491C00116B07 /* RSConnectsUITests.swift */; };
 		14CAD4EF2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */; };
+		14CAD4FD2A094F8E00116B07 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 14CAD4FC2A094F8E00116B07 /* AWSAPIPlugin */; };
+		14CAD4FF2A094F8E00116B07 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 14CAD4FE2A094F8E00116B07 /* AWSCognitoAuthPlugin */; };
+		14CAD5012A094F8E00116B07 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 14CAD5002A094F8E00116B07 /* Amplify */; };
+		14CAD5042A095B5100116B07 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD5032A095B5100116B07 /* Profile.swift */; };
+		14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD5062A095D1F00116B07 /* ModelData.swift */; };
+		2F94A02E424089E63B551016 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C70B92C6DF1B5F465ED62DD4 /* amplifyconfiguration.json */; };
+		F5A91608D7FA7C35A16B070C /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 027B172F55CBEFE4C2FD2EE6 /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		027B172F55CBEFE4C2FD2EE6 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		14832A642A0A98D600F19B3C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		14832A662A0A98EC00F19B3C /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		14832A682A0A98FC00F19B3C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		14832A6A2A0A990600F19B3C /* Reset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reset.swift; sourceTree = "<group>"; };
+		14832A6C2A0A991300F19B3C /* Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confirm.swift; sourceTree = "<group>"; };
 		14CAD4CD2A09491800116B07 /* RSConnects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSConnects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CAD4D02A09491800116B07 /* RSConnectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsApp.swift; sourceTree = "<group>"; };
 		14CAD4D22A09491800116B07 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +63,9 @@
 		14CAD4E82A09491C00116B07 /* RSConnectsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSConnectsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CAD4EC2A09491C00116B07 /* RSConnectsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsUITests.swift; sourceTree = "<group>"; };
 		14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		14CAD5032A095B5100116B07 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		14CAD5062A095D1F00116B07 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		C70B92C6DF1B5F465ED62DD4 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CAD5012A094F8E00116B07 /* Amplify in Frameworks */,
+				14CAD4FD2A094F8E00116B07 /* AWSAPIPlugin in Frameworks */,
+				14CAD4FF2A094F8E00116B07 /* AWSCognitoAuthPlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +96,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14832A632A0A985D00F19B3C /* AWS Auth */ = {
+			isa = PBXGroup;
+			children = (
+				14832A642A0A98D600F19B3C /* Session.swift */,
+				14832A662A0A98EC00F19B3C /* SignIn.swift */,
+				14832A682A0A98FC00F19B3C /* SignUp.swift */,
+				14832A6A2A0A990600F19B3C /* Reset.swift */,
+				14832A6C2A0A991300F19B3C /* Confirm.swift */,
+			);
+			path = "AWS Auth";
+			sourceTree = "<group>";
+		};
 		14CAD4C42A09491800116B07 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +115,7 @@
 				14CAD4E12A09491C00116B07 /* RSConnectsTests */,
 				14CAD4EB2A09491C00116B07 /* RSConnectsUITests */,
 				14CAD4CE2A09491800116B07 /* Products */,
+				D456B342BE85BBF92207DDF9 /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,8 +132,9 @@
 		14CAD4CF2A09491800116B07 /* RSConnects */ = {
 			isa = PBXGroup;
 			children = (
+				14CAD5022A095B3400116B07 /* Model */,
+				14CAD5052A095B6600116B07 /* Views */,
 				14CAD4D02A09491800116B07 /* RSConnectsApp.swift */,
-				14CAD4D22A09491800116B07 /* ContentView.swift */,
 				14CAD4D42A09491B00116B07 /* Assets.xcassets */,
 				14CAD4D92A09491B00116B07 /* RSConnects.entitlements */,
 				14CAD4D62A09491B00116B07 /* Preview Content */,
@@ -129,6 +167,33 @@
 			path = RSConnectsUITests;
 			sourceTree = "<group>";
 		};
+		14CAD5022A095B3400116B07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14CAD5062A095D1F00116B07 /* ModelData.swift */,
+				14CAD5032A095B5100116B07 /* Profile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14CAD5052A095B6600116B07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				14832A632A0A985D00F19B3C /* AWS Auth */,
+				14CAD4D22A09491800116B07 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D456B342BE85BBF92207DDF9 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				027B172F55CBEFE4C2FD2EE6 /* awsconfiguration.json */,
+				C70B92C6DF1B5F465ED62DD4 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +210,11 @@
 			dependencies = (
 			);
 			name = RSConnects;
+			packageProductDependencies = (
+				14CAD4FC2A094F8E00116B07 /* AWSAPIPlugin */,
+				14CAD4FE2A094F8E00116B07 /* AWSCognitoAuthPlugin */,
+				14CAD5002A094F8E00116B07 /* Amplify */,
+			);
 			productName = RSConnects;
 			productReference = 14CAD4CD2A09491800116B07 /* RSConnects.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +287,9 @@
 				Base,
 			);
 			mainGroup = 14CAD4C42A09491800116B07;
+			packageReferences = (
+				14CAD4FB2A094F8E00116B07 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+			);
 			productRefGroup = 14CAD4CE2A09491800116B07 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +308,8 @@
 			files = (
 				14CAD4D82A09491B00116B07 /* Preview Assets.xcassets in Resources */,
 				14CAD4D52A09491B00116B07 /* Assets.xcassets in Resources */,
+				F5A91608D7FA7C35A16B070C /* awsconfiguration.json in Resources */,
+				2F94A02E424089E63B551016 /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +334,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */,
+				14832A6B2A0A990600F19B3C /* Reset.swift in Sources */,
+				14832A6D2A0A991300F19B3C /* Confirm.swift in Sources */,
+				14832A652A0A98D600F19B3C /* Session.swift in Sources */,
+				14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */,
 				14CAD4D32A09491800116B07 /* ContentView.swift in Sources */,
+				14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */,
+				14CAD5042A095B5100116B07 /* Profile.swift in Sources */,
 				14CAD4D12A09491800116B07 /* RSConnectsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,8 +514,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -459,8 +545,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -576,6 +666,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14CAD4FB2A094F8E00116B07 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14CAD4FC2A094F8E00116B07 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14CAD4FB2A094F8E00116B07 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		14CAD4FE2A094F8E00116B07 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14CAD4FB2A094F8E00116B07 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		14CAD5002A094F8E00116B07 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14CAD4FB2A094F8E00116B07 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 14CAD4C52A09491800116B07 /* Project object */;
 }
