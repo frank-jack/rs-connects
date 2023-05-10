@@ -16,6 +16,18 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "rsConnectsPostData": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "rsConnectsGroupData": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "api": {
@@ -27,6 +39,22 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "storage": {
         "RSConnectsUserDataStorage": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "RSConnectsPostStorage": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "RSConnectsGroupStorage": {
             "Name": "string",
             "Arn": "string",
             "StreamArn": "string",

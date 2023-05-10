@@ -18,8 +18,11 @@ def handler(event, context):
     print('received event:')
     print(event)
     if 'GET' in event['httpMethod']:
-        print(list(event['queryStringParameters'].keys())[list(event['queryStringParameters'].values()).index('')])
-        response = getUserInfo(list(event['queryStringParameters'].keys())[list(event['queryStringParameters'].values()).index('')])
+        if event['queryStringParameters'] is not None:
+            print(list(event['queryStringParameters'].keys())[list(event['queryStringParameters'].values()).index('')])
+            response = getUserInfo(list(event['queryStringParameters'].keys())[list(event['queryStringParameters'].values()).index('')])
+        else:
+            response = getAllUserInfo()
         print(response)
     if 'POST' in event['httpMethod']:
         body = json.loads(event['body'])
@@ -73,3 +76,10 @@ def getUserInfo(id):
     response = tableUserData.query(KeyConditionExpression=Key('id').eq(id))
     return response
 
+def getAllUserInfo():
+    response = tableUserData.scan()
+    data = response['Items']
+    while 'LastEvaluatedKey' in response:   
+        response = tableUserData.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
+        data.extend(response['Items'])
+    return response

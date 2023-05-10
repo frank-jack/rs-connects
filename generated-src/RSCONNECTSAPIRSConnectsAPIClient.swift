@@ -160,6 +160,94 @@ public class RSCONNECTSAPIRSConnectsAPIClient: AWSAPIGatewayClient {
      
      return type: 
      */
+    public func groupDataOptions() -> AWSTask<AnyObject> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    let pathParameters:[String:Any] = [:]
+	    
+	    return self.invokeHTTPRequest("OPTIONS", urlString: "/groupData", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: nil)
+	}
+
+	
+    /*
+     
+     
+     @param proxy 
+     
+     return type: 
+     */
+    public func groupDataProxyOptions(proxy: String) -> AWSTask<AnyObject> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    var pathParameters:[String:Any] = [:]
+	    pathParameters["proxy"] = proxy
+	    
+	    return self.invokeHTTPRequest("OPTIONS", urlString: "/groupData/{proxy+}", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: nil)
+	}
+
+	
+    /*
+     
+     
+     
+     return type: 
+     */
+    public func postDataOptions() -> AWSTask<AnyObject> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    let pathParameters:[String:Any] = [:]
+	    
+	    return self.invokeHTTPRequest("OPTIONS", urlString: "/postData", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: nil)
+	}
+
+	
+    /*
+     
+     
+     @param proxy 
+     
+     return type: 
+     */
+    public func postDataProxyOptions(proxy: String) -> AWSTask<AnyObject> {
+	    let headerParameters = [
+                   "Content-Type": "application/json",
+                   "Accept": "application/json",
+                   
+	            ]
+	    
+	    let queryParameters:[String:Any] = [:]
+	    
+	    var pathParameters:[String:Any] = [:]
+	    pathParameters["proxy"] = proxy
+	    
+	    return self.invokeHTTPRequest("OPTIONS", urlString: "/postData/{proxy+}", pathParameters: pathParameters, queryParameters: queryParameters, headerParameters: headerParameters, body: nil, responseClass: nil)
+	}
+
+	
+    /*
+     
+     
+     
+     return type: 
+     */
     public func userDataOptions() -> AWSTask<AnyObject> {
 	    let headerParameters = [
                    "Content-Type": "application/json",

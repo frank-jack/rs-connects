@@ -7,6 +7,20 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/postData": {
+      "name": "/postData",
+      "lambdaFunction": "rsConnectsPostData",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/groupData": {
+      "name": "/groupData",
+      "lambdaFunction": "rsConnectsGroupData",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

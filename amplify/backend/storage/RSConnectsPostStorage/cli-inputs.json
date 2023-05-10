@@ -1,0 +1,10 @@
+{
+  "resourceName": "RSConnectsPostStorage",
+  "tableName": "RSConnectsPostStorage",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

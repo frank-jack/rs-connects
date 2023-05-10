@@ -41,6 +41,38 @@
           ]
         }
       ]
+    },
+    "rsConnectsPostData": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "RSConnectsPostStorage",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
+    },
+    "rsConnectsGroupData": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "RSConnectsGroupStorage",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -55,12 +87,36 @@
             "Name",
             "Arn"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "rsConnectsPostData",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "rsConnectsGroupData",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }
   },
   "storage": {
     "RSConnectsUserDataStorage": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "RSConnectsPostStorage": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "RSConnectsGroupStorage": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }

@@ -10,18 +10,40 @@ import Amplify
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var selection: Tab = .general
+    enum Tab {
+        case general
+        case specific
+    }
+    @State private var showSettings = false
     var body: some View {
         NavigationView {
             if modelData.showApp {
                 VStack {
-                    Button("Sign Out") {
-                        Task {
-                            await modelData.signOutLocally()
+                    TabView(selection: $selection) {
+                        GeneralFeedView()
+                            .tabItem {
+                                Label("Feed", systemImage: "chart.bar.fill")
+                            }
+                            .tag(Tab.general)
+                        SpecificFeedView()
+                            .tabItem {
+                                Label("Channels", systemImage: "list.bullet")
+                            }
+                            .tag(Tab.specific)
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) { 
+                        Button {
+                            showSettings.toggle()
+                        } label: {
+                            Label("Settings", systemImage: "gear")
                         }
                     }
-                    Button("check") {
-                        print(modelData.profile)
-                    }
+                }
+                .sheet(isPresented: $showSettings) {
+                    Settings()
                 }
             } else {
                 switch modelData.authState {

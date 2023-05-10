@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1406D3792A0BDBA50053DC84 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3782A0BDBA50053DC84 /* Post.swift */; };
+		1406D37B2A0BDCB60053DC84 /* GeneralFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D37A2A0BDCB60053DC84 /* GeneralFeedView.swift */; };
+		1406D37D2A0BDD580053DC84 /* SpecificFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D37C2A0BDD580053DC84 /* SpecificFeedView.swift */; };
+		1406D37F2A0BDED50053DC84 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D37E2A0BDED50053DC84 /* Group.swift */; };
+		1406D3812A0BDF690053DC84 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3802A0BDF690053DC84 /* Settings.swift */; };
+		1406D3832A0BF73F0053DC84 /* SpecificFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3822A0BF73F0053DC84 /* SpecificFeed.swift */; };
 		14832A652A0A98D600F19B3C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A642A0A98D600F19B3C /* Session.swift */; };
 		14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A662A0A98EC00F19B3C /* SignIn.swift */; };
 		14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A682A0A98FC00F19B3C /* SignUp.swift */; };
@@ -47,6 +53,12 @@
 
 /* Begin PBXFileReference section */
 		027B172F55CBEFE4C2FD2EE6 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		1406D3782A0BDBA50053DC84 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		1406D37A2A0BDCB60053DC84 /* GeneralFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFeedView.swift; sourceTree = "<group>"; };
+		1406D37C2A0BDD580053DC84 /* SpecificFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificFeedView.swift; sourceTree = "<group>"; };
+		1406D37E2A0BDED50053DC84 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		1406D3802A0BDF690053DC84 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		1406D3822A0BF73F0053DC84 /* SpecificFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificFeed.swift; sourceTree = "<group>"; };
 		14832A642A0A98D600F19B3C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		14832A662A0A98EC00F19B3C /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		14832A682A0A98FC00F19B3C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -172,6 +184,8 @@
 			children = (
 				14CAD5062A095D1F00116B07 /* ModelData.swift */,
 				14CAD5032A095B5100116B07 /* Profile.swift */,
+				1406D3782A0BDBA50053DC84 /* Post.swift */,
+				1406D37E2A0BDED50053DC84 /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +195,10 @@
 			children = (
 				14832A632A0A985D00F19B3C /* AWS Auth */,
 				14CAD4D22A09491800116B07 /* ContentView.swift */,
+				1406D37A2A0BDCB60053DC84 /* GeneralFeedView.swift */,
+				1406D37C2A0BDD580053DC84 /* SpecificFeedView.swift */,
+				1406D3822A0BF73F0053DC84 /* SpecificFeed.swift */,
+				1406D3802A0BDF690053DC84 /* Settings.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,11 +356,17 @@
 				14832A6B2A0A990600F19B3C /* Reset.swift in Sources */,
 				14832A6D2A0A991300F19B3C /* Confirm.swift in Sources */,
 				14832A652A0A98D600F19B3C /* Session.swift in Sources */,
+				1406D3812A0BDF690053DC84 /* Settings.swift in Sources */,
 				14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */,
 				14CAD4D32A09491800116B07 /* ContentView.swift in Sources */,
+				1406D37F2A0BDED50053DC84 /* Group.swift in Sources */,
+				1406D37B2A0BDCB60053DC84 /* GeneralFeedView.swift in Sources */,
 				14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */,
 				14CAD5042A095B5100116B07 /* Profile.swift in Sources */,
 				14CAD4D12A09491800116B07 /* RSConnectsApp.swift in Sources */,
+				1406D3832A0BF73F0053DC84 /* SpecificFeed.swift in Sources */,
+				1406D37D2A0BDD580053DC84 /* SpecificFeedView.swift in Sources */,
+				1406D3792A0BDBA50053DC84 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,13 +531,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -538,13 +569,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RSConnects.RSConnects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
