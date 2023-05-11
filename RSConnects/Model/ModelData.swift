@@ -24,44 +24,9 @@ final class ModelData: ObservableObject {
     @Published var users = [Profile]()
     @Published var showApp = false
     init() {
-        getData()
-    }
-    
-    func getData() {
         getPostData()
         getGroupData()
         getAllUserData()
-    }
-    
-    func getAllUserData() {
-        self.users = [Profile]()
-        var getRequest = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData")!)
-        getRequest.httpMethod = "GET"
-        getRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let getSession = URLSession.shared
-        let getTask = getSession.dataTask(with: getRequest, completionHandler: { data, response, error -> Void in
-            print(response!)
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                print("json start")
-                print(json)
-                print("json end")
-                if let jsonArray = json["Items"] as? [[String:Any]] {
-                    for i in jsonArray {
-                        var isAdmin = false
-                        if i["isAdmin"] as! String == "true" {
-                            isAdmin = true
-                        }
-                        DispatchQueue.main.async { [self] in
-                            self.users.append(Profile(id: i["id"] as! String, email: i["email"] as! String, phone: i["phone"] as! String, username: i["username"] as! String, isAdmin: isAdmin))
-                        }
-                    }
-                }
-            } catch {
-                print("error")
-            }
-        })
-        getTask.resume()
     }
     
     //Post Data
@@ -103,12 +68,14 @@ final class ModelData: ObservableObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getPostData()
+                }
             } catch {
                 print("error")
             }
         })
         task.resume()
-        getData()
     }
     func putPostData(post: Post) {
         let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image] as! Dictionary<String, String>
@@ -122,12 +89,35 @@ final class ModelData: ObservableObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getPostData()
+                }
             } catch {
                 print("error")
             }
         })
         task.resume()
-        getData()
+    }
+    func deletePostData(post: Post) {
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image] as! Dictionary<String, String>
+        var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
+        request.httpMethod = "DELETE"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getPostData()
+                }
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
     }
     
     //Group Data
@@ -169,12 +159,14 @@ final class ModelData: ObservableObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getGroupData()
+                }
             } catch {
                 print("error")
             }
         })
         task.resume()
-        getData()
     }
     func putGroupData(group: Group) {
         let params = ["id": group.id, "name": group.name, "image": group.image] as! Dictionary<String, String>
@@ -188,15 +180,68 @@ final class ModelData: ObservableObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getGroupData()
+                }
             } catch {
                 print("error")
             }
         })
         task.resume()
-        getData()
+    }
+    func deleteGroupData(group: Group) {
+        let params = ["id": group.id, "name": group.name, "image": group.image] as! Dictionary<String, String>
+        var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/groupData")!)
+        request.httpMethod = "DELETE"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getGroupData()
+                }
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
     }
     
     //User Data
+    func getAllUserData() {
+        self.users = [Profile]()
+        var getRequest = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData")!)
+        getRequest.httpMethod = "GET"
+        getRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let getSession = URLSession.shared
+        let getTask = getSession.dataTask(with: getRequest, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print("json start")
+                print(json)
+                print("json end")
+                if let jsonArray = json["Items"] as? [[String:Any]] {
+                    for i in jsonArray {
+                        var isAdmin = false
+                        if i["isAdmin"] as! String == "true" {
+                            isAdmin = true
+                        }
+                        DispatchQueue.main.async { [self] in
+                            self.users.append(Profile(id: i["id"] as! String, email: i["email"] as! String, phone: i["phone"] as! String, username: i["username"] as! String, isAdmin: isAdmin))
+                        }
+                    }
+                }
+            } catch {
+                print("error")
+            }
+        })
+        getTask.resume()
+    }
     func getUserData(id: String) {
         var getRequest = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData?"+id)!)
         getRequest.httpMethod = "GET"
@@ -257,13 +302,15 @@ final class ModelData: ObservableObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getAllUserData()
+                }
             } catch {
                 print("error")
             }
         })
         task.resume()
         getUserData(id: profile.id)
-        getData()
     }
     func putUserData(profile: Profile) {
         let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin)] as! Dictionary<String, String>
@@ -277,12 +324,35 @@ final class ModelData: ObservableObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getAllUserData()
+                }
             } catch {
                 print("error")
             }
         })
         task.resume()
-        getData()
+    }
+    func deleteUserData(profile: Profile) {
+        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin)] as! Dictionary<String, String>
+        var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData")!)
+        request.httpMethod = "DELETE"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+                DispatchQueue.main.async { [self] in
+                    self.getAllUserData()
+                }
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
     }
     
     //Auth Stuff

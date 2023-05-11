@@ -30,6 +30,9 @@ def handler(event, context):
     if 'PUT' in event['httpMethod']:
         body = json.loads(event['body'])
         response = updateUserInfo(body['id'], body['email'], body['phone'], body['username'], body['isAdmin'])
+    if 'DELETE' in event['httpMethod']:
+        body = json.loads(event['body'])
+        response = deleteUserInfo(body['id'])
  
 
   
@@ -82,4 +85,12 @@ def getAllUserInfo():
     while 'LastEvaluatedKey' in response:   
         response = tableUserData.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
         data.extend(response['Items'])
+    return response
+
+def deleteUserInfo(id):
+    response = tableUserData.delete_item(
+        Key={
+            'id': id
+        }
+    )
     return response

@@ -26,6 +26,9 @@ def handler(event, context):
     if 'PUT' in event['httpMethod']:
         body = json.loads(event['body'])
         response = updatePostInfo(body['id'], body['userId'], body['text'], body['groupId'], body['image'])
+    if 'DELETE' in event['httpMethod']:
+        body = json.loads(event['body'])
+        response = deletePostInfo(body['id'])
  
 
   
@@ -76,6 +79,11 @@ def getAllPostInfo():
         data.extend(response['Items'])
     return response
 
-
-
+def deletePostInfo(id):
+    response = tablePostData.delete_item(
+        Key={
+            'id': id
+        }
+    )
+    return response
 

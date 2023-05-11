@@ -26,6 +26,9 @@ def handler(event, context):
     if 'PUT' in event['httpMethod']:
         body = json.loads(event['body'])
         response = updateGroupInfo(body['id'], body['name'], body['image'])
+    if 'DELETE' in event['httpMethod']:
+        body = json.loads(event['body'])
+        response = deleteGroupInfo(body['id'])
  
 
   
@@ -70,5 +73,13 @@ def getAllGroupInfo():
     while 'LastEvaluatedKey' in response:   
         response = tableGroupData.scan(ExclusiveStartKey=response['LastEvaluatedKey'])
         data.extend(response['Items'])
+    return response
+
+def deleteGroupInfo(id):
+    response = tableGroupData.delete_item(
+        Key={
+            'id': id
+        }
+    )
     return response
 

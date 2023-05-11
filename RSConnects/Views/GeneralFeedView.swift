@@ -9,22 +9,13 @@ import SwiftUI
 
 struct GeneralFeedView: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var localPosts = [Post]()
     @State private var text = ""
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(modelData.posts, id: \.self) { post in
-                    VStack {
-                        HStack {
-                            Text(modelData.users.first(where: {$0.id == post.userId})?.username ?? "Username Error")
-                            Spacer()
-                        }
-                        Text(post.text)
-                        Image("Test")
-                            .resizable()
-                            .scaledToFit()
-                        Divider()
-                    }
+                ForEach(localPosts, id: \.self) { post in
+                    PostView(post: post)
                 }
             }
             Divider()
@@ -39,6 +30,18 @@ struct GeneralFeedView: View {
                     Label("", systemImage: "arrow.up.circle.fill")
                         .font(.title)
                 }
+            }
+        }
+        .onAppear() {
+            localPosts = [Post]()
+            for i in modelData.posts {
+                localPosts.append(i)
+            }
+        }
+        .onChange(of: modelData.posts) {newValue in
+            localPosts = [Post]()
+            for i in modelData.posts {
+                localPosts.append(i)
             }
         }
     }

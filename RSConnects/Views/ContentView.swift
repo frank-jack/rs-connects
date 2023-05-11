@@ -26,7 +26,7 @@ struct ContentView: View {
                                 Label("Feed", systemImage: "chart.bar.fill")
                             }
                             .tag(Tab.general)
-                        SpecificFeedView()
+                        GroupsView()
                             .tabItem {
                                 Label("Channels", systemImage: "list.bullet")
                             }
