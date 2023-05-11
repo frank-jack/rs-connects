@@ -12,11 +12,21 @@ struct SpecificFeedView: View {
     var group: Group
     @State private var localPosts = [Post]()
     @State private var text = ""
+    @State var searchText = ""
+    var searchResults: [Post] {
+        if searchText.isEmpty {
+            return localPosts
+        } else {
+            return localPosts.filter { $0.text.contains(searchText) }
+        }
+    }
     var body: some View {
         VStack {
             ScrollView {
                 ForEach(localPosts, id: \.self) { post in
-                    PostView(post: post)
+                    if searchResults.contains(post) {
+                        PostView(post: post)
+                    }
                 }
             }
             Divider()
@@ -34,7 +44,6 @@ struct SpecificFeedView: View {
             }
         }
         .onAppear() {
-            localPosts = [Post]()
             for i in modelData.posts {
                 if i.groupId == group.id {
                     localPosts.append(i)
@@ -49,5 +58,6 @@ struct SpecificFeedView: View {
                 }
             }
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search in "+group.name+"...")
     }
 }

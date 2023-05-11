@@ -10,58 +10,60 @@ import Amplify
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
-    @State private var selection: Tab = .general
+    @State private var selection: Tab = .feed
     enum Tab {
-        case general
-        case specific
+        case feed
+        case groups
+        case users
+        case profile
     }
-    @State private var showSettings = false
     var body: some View {
-        NavigationView {
+        VStack {
             if modelData.showApp {
                 VStack {
                     TabView(selection: $selection) {
+                        UsersView()
+                            .tabItem {
+                                Label("Users", systemImage: "magnifyingglass")
+                            }
+                            .tag(Tab.users)
                         GeneralFeedView()
                             .tabItem {
                                 Label("Feed", systemImage: "chart.bar.fill")
                             }
-                            .tag(Tab.general)
+                            .tag(Tab.feed)
                         GroupsView()
                             .tabItem {
-                                Label("Channels", systemImage: "list.bullet")
+                                Label("Groups", systemImage: "list.bullet")
                             }
-                            .tag(Tab.specific)
+                            .tag(Tab.groups)
+                        ProfileView(profile: modelData.profile)
+                            .tabItem {
+                                Label("Profile", systemImage: "person.fill")
+                            }
+                            .tag(Tab.profile)
+                        
                     }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) { 
-                        Button {
-                            showSettings.toggle()
-                        } label: {
-                            Label("Settings", systemImage: "gear")
-                        }
-                    }
-                }
-                .sheet(isPresented: $showSettings) {
-                    Settings()
                 }
             } else {
-                switch modelData.authState {
-                case .signIn:
-                    SignIn()
-                        .environmentObject(modelData)
-                case .signUp:
-                    SignUp()
-                        .environmentObject(modelData)
-                case .confirmCode(let email, let username, let password):
-                    Confirm(email: email, username: username, password: password)
-                        .environmentObject(modelData)
-                case .reset:
-                    Reset()
-                        .environmentObject(modelData)
-                case .session(let user):
-                    Session(user: user)
-                        .environmentObject(modelData)
+                NavigationView {
+                    switch modelData.authState {
+                    case .signIn:
+                        SignIn()
+                            .environmentObject(modelData)
+                    case .signUp:
+                        SignUp()
+                            .environmentObject(modelData)
+                    case .confirmCode(let email, let username, let password):
+                        Confirm(email: email, username: username, password: password)
+                            .environmentObject(modelData)
+                    case .reset:
+                        Reset()
+                            .environmentObject(modelData)
+                    case .session(let user):
+                        Session(user: user)
+                            .environmentObject(modelData)
+                    }
                 }
             }
         }

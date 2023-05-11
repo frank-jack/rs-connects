@@ -16,7 +16,18 @@ struct PostView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(modelData.users.first(where: {$0.id == post.userId})?.username ?? "Username Error")
+                NavigationLink(destination: ProfileView(profile: modelData.users.first(where: {$0.id == post.userId}) ?? Profile.default), label: { HStack {
+                    Image("Test")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 90, height: 90)
+                    Text(modelData.users.first(where: {$0.id == post.userId})?.username ?? "Username Error")
+                        .foregroundColor(.primary)
+                        .padding(.horizontal, -20)
+                    }
+                })
+                .padding(.horizontal, -20)
                 Spacer()
                 if modelData.profile.id == post.userId {
                     if !isEditing {
@@ -34,21 +45,31 @@ struct PostView: View {
                         } label: {
                             Label("", systemImage: "checkmark.circle.fill")
                                 .font(.title2)
+                                .foregroundColor(.gray)
+                        }
+                        Button {
+                            isEditing = false
+                        } label: {
+                            Label("", systemImage: "x.circle.fill")
+                                .font(.title2)
+                                .foregroundColor(.gray)
                         }
                     }
-                    Button {
-                        showDeleteAlert = true
-                    } label: {
-                        Label("", systemImage: "trash")
-                            .foregroundColor(.gray)
-                    }
-                    .alert("Delete Post", isPresented: $showDeleteAlert, actions: {
-                        Button("Delete", role: .destructive, action: {
-                            modelData.deletePostData(post: post)
+                    if !isEditing {
+                        Button {
+                            showDeleteAlert = true
+                        } label: {
+                            Label("", systemImage: "trash")
+                                .foregroundColor(.gray)
+                        }
+                        .alert("Delete Post", isPresented: $showDeleteAlert, actions: {
+                            Button("Delete", role: .destructive, action: {
+                                modelData.deletePostData(post: post)
+                            })
+                        }, message: {
+                            Text("Are you sure you want to delete this post?")
                         })
-                    }, message: {
-                        Text("Are you sure you want to delete this post?")
-                    })
+                    }
                 }
             }
             if !isEditing {

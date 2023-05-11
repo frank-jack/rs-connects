@@ -23,6 +23,7 @@ final class ModelData: ObservableObject {
     @Published var posts = [Post]()
     @Published var users = [Profile]()
     @Published var showApp = false
+    @Published var isSearching = false
     init() {
         getPostData()
         getGroupData()
