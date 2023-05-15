@@ -22,10 +22,10 @@ def handler(event, context):
         print(response)
     if 'POST' in event['httpMethod']:
         body = json.loads(event['body'])
-        response = addPostInfo(body['id'], body['userId'], body['text'], body['groupId'], body['image'])
+        response = addPostInfo(body['id'], body['userId'], body['text'], body['groupId'], body['image'], body['date'])
     if 'PUT' in event['httpMethod']:
         body = json.loads(event['body'])
-        response = updatePostInfo(body['id'], body['userId'], body['text'], body['groupId'], body['image'])
+        response = updatePostInfo(body['id'], body['userId'], body['text'], body['groupId'], body['image'], body['date'])
     if 'DELETE' in event['httpMethod']:
         body = json.loads(event['body'])
         response = deletePostInfo(body['id'])
@@ -42,19 +42,20 @@ def handler(event, context):
         'body': json.dumps(response)
     }
 
-def addPostInfo(id, userId, text, groupId, image):
+def addPostInfo(id, userId, text, groupId, image, date):
     response = tablePostData.put_item(
         Item={
             'id': id,
             'userId': userId,
             'text': text,
             'groupId': groupId,
-            'image': image
+            'image': image,
+            'date': date
         }
     )
     return response
 
-def updatePostInfo(id, userId, text, groupId, image):
+def updatePostInfo(id, userId, text, groupId, image, date):
     response = tablePostData.delete_item(
         Key={
             'id': id,
@@ -66,7 +67,8 @@ def updatePostInfo(id, userId, text, groupId, image):
             'userId': userId,
             'text': text,
             'groupId': groupId,
-            'image': image
+            'image': image,
+            'date': date
         }
     )
     return response

@@ -47,7 +47,7 @@ final class ModelData: ObservableObject {
                 if let jsonArray = json["Items"] as? [[String:Any]] {
                     for i in jsonArray {
                         DispatchQueue.main.async { [self] in
-                            self.posts.append(Post(id: i["id"] as! String, userId: i["userId"] as! String, text: i["text"] as! String, groupId: i["groupId"] as! String, image: i["image"] as! String))
+                            self.posts.append(Post(id: i["id"] as! String, userId: i["userId"] as! String, text: i["text"] as! String, groupId: i["groupId"] as! String, image: i["image"] as! String, date: i["date"] as! String))
                         }
                     }
                 }
@@ -58,7 +58,7 @@ final class ModelData: ObservableObject {
         getTask.resume()
     }
     func postPostData(post: Post) {
-        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image] as! Dictionary<String, String>
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -70,7 +70,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.posts.append(Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image))
+                    self.posts.append(Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date))
                 }
             } catch {
                 print("error")
@@ -79,7 +79,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func putPostData(post: Post) {
-        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image] as! Dictionary<String, String>
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
         request.httpMethod = "PUT"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -92,7 +92,7 @@ final class ModelData: ObservableObject {
                 print(json)
                 DispatchQueue.main.async { [self] in
                     if let i = self.posts.firstIndex(where: {$0.id == post.id}) {
-                           posts[i] = Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image)
+                        posts[i] = Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date)
                     }
                 }
             } catch {
@@ -102,7 +102,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func deletePostData(post: Post) {
-        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image] as! Dictionary<String, String>
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
         request.httpMethod = "DELETE"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -241,7 +241,7 @@ final class ModelData: ObservableObject {
                             isAdmin = true
                         }
                         DispatchQueue.main.async { [self] in
-                            self.users.append(Profile(id: i["id"] as! String, email: i["email"] as! String, phone: i["phone"] as! String, username: i["username"] as! String, isAdmin: isAdmin))
+                            self.users.append(Profile(id: i["id"] as! String, email: i["email"] as! String, phone: i["phone"] as! String, username: i["username"] as! String, image: i["image"] as! String, isAdmin: isAdmin))
                         }
                     }
                 }
@@ -266,21 +266,23 @@ final class ModelData: ObservableObject {
                 var email = ""
                 var phone = ""
                 var username = ""
+                var image = ""
                 var isAdmin = false
                 if let jsonArray = json["Items"] as? [[String:Any]],
                    let items = jsonArray.first {
                     email = items["email"] as! String
-                    print(email)
                 }
                 if let jsonArray = json["Items"] as? [[String:Any]],
                    let items = jsonArray.first {
                     phone = items["phone"] as! String
-                    print(phone)
                 }
                 if let jsonArray = json["Items"] as? [[String:Any]],
                    let items = jsonArray.first {
                     username = items["username"] as! String
-                    print(username)
+                }
+                if let jsonArray = json["Items"] as? [[String:Any]],
+                   let items = jsonArray.first {
+                    image = items["image"] as! String
                 }
                 if let jsonArray = json["Items"] as? [[String:Any]],
                    let items = jsonArray.first {
@@ -288,10 +290,9 @@ final class ModelData: ObservableObject {
                     if temp == "true" {
                         isAdmin = true
                     }
-                    print(isAdmin)
                 }
                 DispatchQueue.main.async { [self] in
-                    self.profile = Profile(id: id, email: email, phone: phone, username: username, isAdmin: isAdmin)
+                    self.profile = Profile(id: id, email: email, phone: phone, username: username, image: image, isAdmin: isAdmin)
                 }
             } catch {
                 print("error")
@@ -312,7 +313,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, isAdmin: profile.isAdmin))
+                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin))
                 }
             } catch {
                 print("error")
@@ -335,7 +336,7 @@ final class ModelData: ObservableObject {
                 print(json)
                 DispatchQueue.main.async { [self] in
                     if let i = self.users.firstIndex(where: {$0.id == profile.id}) {
-                        users[i] = Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, isAdmin: profile.isAdmin)
+                        users[i] = Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin)
                     }
                 }
             } catch {
@@ -419,7 +420,7 @@ final class ModelData: ObservableObject {
             )
             print("Confirm sign up result completed: \(confirmSignUpResult.isSignUpComplete)")
             await signIn(username: username, password: password)
-            await postUserData(profile: Profile(id: try Amplify.Auth.getCurrentUser().userId, email: email, phone: "", username: username, isAdmin: false))
+            await postUserData(profile: Profile(id: try Amplify.Auth.getCurrentUser().userId, email: email, phone: "", username: username, image: "", isAdmin: false))
         } catch let error as AuthError {
             print("An error occurred while confirming sign up \(error)")
         } catch {

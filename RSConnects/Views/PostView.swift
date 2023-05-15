@@ -28,6 +28,10 @@ struct PostView: View {
                     }
                 })
                 .padding(.horizontal, -20)
+                Text("•"+howLongAgo(posted: post.date))
+                    .font(.body)
+                    .padding(.horizontal, 35)
+                    .foregroundColor(.gray)
                 Spacer()
                 if modelData.profile.id == post.userId {
                     if !isEditing {
@@ -41,7 +45,7 @@ struct PostView: View {
                     } else {
                         Button {
                             isEditing = false
-                            modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: editingText, groupId: post.groupId, image: post.image))
+                            modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: editingText, groupId: post.groupId, image: post.image, date: post.date))
                         } label: {
                             Label("", systemImage: "checkmark.circle.fill")
                                 .font(.title2)
@@ -86,5 +90,24 @@ struct PostView: View {
             }
             Divider()
         }
+    }
+    func howLongAgo(posted: String) -> String {
+        let df = DateFormatter()
+        df.dateStyle = DateFormatter.Style.short
+        df.timeStyle = DateFormatter.Style.medium
+        let datePosted = df.date(from: posted)!
+        if Calendar.current.dateComponents([.day], from: datePosted, to: Date()).day! > 0 {
+            return String(Calendar.current.dateComponents([.day], from: df.date(from: posted)!, to: Date()).day!)+"d"
+        }
+        if Calendar.current.dateComponents([.hour], from: datePosted, to: Date()).hour! > 0 {
+            return String(Calendar.current.dateComponents([.hour], from: df.date(from: posted)!, to: Date()).hour!)+"h"
+        }
+        if Calendar.current.dateComponents([.minute], from: datePosted, to: Date()).minute! > 0 {
+            return String(Calendar.current.dateComponents([.minute], from: df.date(from: posted)!, to: Date()).minute!)+"m"
+        }
+        if Calendar.current.dateComponents([.second], from: datePosted, to: Date()).second! > 0 {
+            return String(Calendar.current.dateComponents([.second], from: df.date(from: posted)!, to: Date()).second!)+"s"
+        }
+        return "0s"
     }
 }

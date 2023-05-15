@@ -12,7 +12,8 @@ struct Profile: Hashable {
     var email: String
     var phone: String
     var username: String
+    var image: String
     var isAdmin: Bool
     
-    static let `default` = Profile(id: "", email: "", phone: "", username: "", isAdmin: false)
+    static let `default` = Profile(id: "", email: "", phone: "", username: "", image: "", isAdmin: false)
 }

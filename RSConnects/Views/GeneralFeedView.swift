@@ -10,6 +10,7 @@ import SwiftUI
 struct GeneralFeedView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var localPosts = [Post]()
+    @State private var temp = [Post]()
     @State private var text = ""
     @State var searchText = ""
     var searchResults: [Post] {
@@ -35,7 +36,11 @@ struct GeneralFeedView: View {
                     TextField("Post in General...", text: $text)
                     Spacer()
                     Button {
-                        modelData.postPostData(post: Post(id: UUID().uuidString, userId: modelData.profile.id, text: text, groupId: "", image: ""))
+                        let date = Date()
+                        let df = DateFormatter()
+                        df.dateStyle = DateFormatter.Style.short
+                        df.timeStyle = DateFormatter.Style.medium
+                        modelData.postPostData(post: Post(id: UUID().uuidString, userId: modelData.profile.id, text: text, groupId: "", image: "", date: df.string(from: date)))
                         text = ""
                     } label: {
                         Label("", systemImage: "arrow.up.circle.fill")
@@ -44,16 +49,24 @@ struct GeneralFeedView: View {
                 }
             }
             .onAppear() {
-                localPosts = [Post]()
+                let df = DateFormatter()
+                df.dateStyle = DateFormatter.Style.short
+                df.timeStyle = DateFormatter.Style.medium
+                temp = [Post]()
                 for i in modelData.posts {
-                    localPosts.append(i)
+                    temp.append(i)
                 }
+                localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
             }
             .onChange(of: modelData.posts) {newValue in
-                localPosts = [Post]()
+                let df = DateFormatter()
+                df.dateStyle = DateFormatter.Style.short
+                df.timeStyle = DateFormatter.Style.medium
+                temp = [Post]()
                 for i in modelData.posts {
-                    localPosts.append(i)
+                    temp.append(i)
                 }
+                localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search in General...")

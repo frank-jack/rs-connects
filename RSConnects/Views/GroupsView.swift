@@ -52,7 +52,7 @@ struct GroupsView: View {
                             modelData.deleteGroupData(group: groupToBeDeleted)
                             for i in modelData.posts {
                                 if i.groupId == groupToBeDeleted.id {
-                                    modelData.putPostData(post: Post(id: i.id, userId: i.userId, text: i.text, groupId: "", image: i.image))
+                                    modelData.putPostData(post: Post(id: i.id, userId: i.userId, text: i.text, groupId: "", image: i.image, date: i.date))
                                 }
                             }
                         })

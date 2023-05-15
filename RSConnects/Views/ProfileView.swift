@@ -46,7 +46,7 @@ struct ProfileView: View {
                         .font(.caption)
                         .alert("Make Admin", isPresented: $showAdminAlert, actions: {
                             Button("Make Admin", role: .destructive, action: {
-                                modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, isAdmin: true))
+                                modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: true))
                             })
                         }, message: {
                             Text("Are you sure you want to make this user an Admin? This will grant the user admin abilties and cannot be undone.")
