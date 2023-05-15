@@ -11,7 +11,6 @@ struct ProfileView: View {
     @EnvironmentObject var modelData: ModelData
     var profile: Profile
     @State private var localPosts = [Post]()
-    @State private var temp = [Post]()
     @State private var showAdminAlert = false
     @State private var showSettings = false
     var body: some View {
@@ -62,9 +61,13 @@ struct ProfileView: View {
                 let df = DateFormatter()
                 df.dateStyle = DateFormatter.Style.short
                 df.timeStyle = DateFormatter.Style.medium
-                temp = [Post]()
+                var temp = [Post]()
+                var ids = [String]()
                 for i in modelData.posts {
-                    if i.userId == profile.id {
+                    ids.append(i.id)
+                }
+                for i in modelData.posts {
+                    if i.userId == profile.id && !ids.contains(i.groupId) {
                         temp.append(i)
                     }
                 }
@@ -74,9 +77,13 @@ struct ProfileView: View {
                 let df = DateFormatter()
                 df.dateStyle = DateFormatter.Style.short
                 df.timeStyle = DateFormatter.Style.medium
-                temp = [Post]()
+                var temp = [Post]()
+                var ids = [String]()
                 for i in modelData.posts {
-                    if i.userId == profile.id {
+                    ids.append(i.id)
+                }
+                for i in modelData.posts {
+                    if i.userId == profile.id && !ids.contains(i.groupId) {
                         temp.append(i)
                     }
                 }

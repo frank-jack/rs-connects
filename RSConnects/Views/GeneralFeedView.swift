@@ -10,7 +10,6 @@ import SwiftUI
 struct GeneralFeedView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var localPosts = [Post]()
-    @State private var temp = [Post]()
     @State private var text = ""
     @State var searchText = ""
     var searchResults: [Post] {
@@ -38,19 +37,21 @@ struct GeneralFeedView: View {
                 }
                 Divider()
                     .frame(height: 3)
-                HStack {
-                    TextField("Post in General...", text: $text)
-                    Spacer()
-                    Button {
-                        let date = Date()
-                        let df = DateFormatter()
-                        df.dateStyle = DateFormatter.Style.short
-                        df.timeStyle = DateFormatter.Style.medium
-                        modelData.postPostData(post: Post(id: UUID().uuidString, userId: modelData.profile.id, text: text, groupId: "", image: "", date: df.string(from: date)))
-                        text = ""
-                    } label: {
-                        Label("", systemImage: "arrow.up.circle.fill")
-                            .font(.title)
+                if modelData.isEditing.count == 0 {
+                    HStack {
+                        TextField("Post in General...", text: $text, axis: .vertical)
+                        Spacer()
+                        Button {
+                            let date = Date()
+                            let df = DateFormatter()
+                            df.dateStyle = DateFormatter.Style.short
+                            df.timeStyle = DateFormatter.Style.medium
+                            modelData.postPostData(post: Post(id: UUID().uuidString, userId: modelData.profile.id, text: text, groupId: "", image: "", date: df.string(from: date), likes: []))
+                            text = ""
+                        } label: {
+                            Label("", systemImage: "arrow.up.circle.fill")
+                                .font(.title)
+                        }
                     }
                 }
             }
@@ -58,19 +59,31 @@ struct GeneralFeedView: View {
                 let df = DateFormatter()
                 df.dateStyle = DateFormatter.Style.short
                 df.timeStyle = DateFormatter.Style.medium
-                temp = [Post]()
+                var temp = [Post]()
+                var ids = [String]()
                 for i in modelData.posts {
-                    temp.append(i)
+                    ids.append(i.id)
+                }
+                for i in modelData.posts {
+                    if !ids.contains(i.groupId) {
+                        temp.append(i)
+                    }
                 }
                 localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
             }
-            .onChange(of: modelData.posts) {newValue in
+            .onChange(of: modelData.posts) { newValue in
                 let df = DateFormatter()
                 df.dateStyle = DateFormatter.Style.short
                 df.timeStyle = DateFormatter.Style.medium
-                temp = [Post]()
+                var temp = [Post]()
+                var ids = [String]()
                 for i in modelData.posts {
-                    temp.append(i)
+                    ids.append(i.id)
+                }
+                for i in modelData.posts {
+                    if !ids.contains(i.groupId) {
+                        temp.append(i)
+                    }
                 }
                 localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
             }

@@ -52,7 +52,7 @@ struct GroupsView: View {
                             modelData.deleteGroupData(group: groupToBeDeleted)
                             for i in modelData.posts {
                                 if i.groupId == groupToBeDeleted.id {
-                                    modelData.putPostData(post: Post(id: i.id, userId: i.userId, text: i.text, groupId: "", image: i.image, date: i.date))
+                                    modelData.putPostData(post: Post(id: i.id, userId: i.userId, text: i.text, groupId: "", image: i.image, date: i.date, likes: i.likes))
                                 }
                             }
                         })
@@ -70,7 +70,7 @@ struct GroupsView: View {
                     Divider()
                         .frame(height: 3)
                     HStack {
-                        TextField("Add group...", text: $text)
+                        TextField("Add group...", text: $text, axis: .vertical)
                         Spacer()
                         Button {
                             modelData.postGroupData(group: Group(id: UUID().uuidString, name: text, image: ""))

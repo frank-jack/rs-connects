@@ -23,7 +23,7 @@ final class ModelData: ObservableObject {
     @Published var posts = [Post]()
     @Published var users = [Profile]()
     @Published var showApp = false
-    @Published var isSearching = false
+    @Published var isEditing = ""
     init() {
         getPostData()
         getGroupData()
@@ -47,7 +47,7 @@ final class ModelData: ObservableObject {
                 if let jsonArray = json["Items"] as? [[String:Any]] {
                     for i in jsonArray {
                         DispatchQueue.main.async { [self] in
-                            self.posts.append(Post(id: i["id"] as! String, userId: i["userId"] as! String, text: i["text"] as! String, groupId: i["groupId"] as! String, image: i["image"] as! String, date: i["date"] as! String))
+                            self.posts.append(Post(id: i["id"] as! String, userId: i["userId"] as! String, text: i["text"] as! String, groupId: i["groupId"] as! String, image: i["image"] as! String, date: i["date"] as! String, likes: i["likes"] as! [String]))
                         }
                     }
                 }
@@ -58,7 +58,7 @@ final class ModelData: ObservableObject {
         getTask.resume()
     }
     func postPostData(post: Post) {
-        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date] as! Dictionary<String, String>
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date, "likes": post.likes.description] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -70,7 +70,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.posts.append(Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date))
+                    self.posts.append(Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: post.likes))
                 }
             } catch {
                 print("error")
@@ -79,7 +79,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func putPostData(post: Post) {
-        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date] as! Dictionary<String, String>
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date, "likes": post.likes.description] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
         request.httpMethod = "PUT"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -92,7 +92,7 @@ final class ModelData: ObservableObject {
                 print(json)
                 DispatchQueue.main.async { [self] in
                     if let i = self.posts.firstIndex(where: {$0.id == post.id}) {
-                        posts[i] = Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date)
+                        posts[i] = Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: post.likes)
                     }
                 }
             } catch {
@@ -102,7 +102,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func deletePostData(post: Post) {
-        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date] as! Dictionary<String, String>
+        let params = ["id": post.id, "userId": post.userId, "text": post.text, "groupId": post.groupId, "image": post.image, "date": post.date, "likes": post.likes] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/postData")!)
         request.httpMethod = "DELETE"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])

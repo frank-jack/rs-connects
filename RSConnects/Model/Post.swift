@@ -14,4 +14,5 @@ struct Post: Hashable {
     var groupId: String
     var image: String
     var date: String
+    var likes: [String]
 }
