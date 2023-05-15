@@ -16,6 +16,8 @@
 		1406D3872A0D47B40053DC84 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3862A0D47B30053DC84 /* ProfileView.swift */; };
 		1406D3892A0D56080053DC84 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3882A0D56080053DC84 /* UsersView.swift */; };
 		1406D38B2A0D58380053DC84 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D38A2A0D58380053DC84 /* ProfileSettingsView.swift */; };
+		1406D3902A1284CA0053DC84 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D38F2A1284CA0053DC84 /* RefreshableScrollView.swift */; };
+		1406D3942A1290590053DC84 /* TabProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3932A1290590053DC84 /* TabProfileView.swift */; };
 		14832A652A0A98D600F19B3C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A642A0A98D600F19B3C /* Session.swift */; };
 		14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A662A0A98EC00F19B3C /* SignIn.swift */; };
 		14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A682A0A98FC00F19B3C /* SignUp.swift */; };
@@ -65,6 +67,8 @@
 		1406D3862A0D47B30053DC84 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1406D3882A0D56080053DC84 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		1406D38A2A0D58380053DC84 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
+		1406D38F2A1284CA0053DC84 /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
+		1406D3932A1290590053DC84 /* TabProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabProfileView.swift; sourceTree = "<group>"; };
 		14832A642A0A98D600F19B3C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		14832A662A0A98EC00F19B3C /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		14832A682A0A98FC00F19B3C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				14CAD4D02A09491800116B07 /* RSConnectsApp.swift */,
 				14CAD4D42A09491B00116B07 /* Assets.xcassets */,
 				14CAD4D92A09491B00116B07 /* RSConnects.entitlements */,
+				1406D38F2A1284CA0053DC84 /* RefreshableScrollView.swift */,
 				14CAD4D62A09491B00116B07 /* Preview Content */,
 			);
 			path = RSConnects;
@@ -207,6 +212,7 @@
 				1406D37C2A0BDD580053DC84 /* GroupsView.swift */,
 				1406D3842A0D359F0053DC84 /* PostView.swift */,
 				1406D3862A0D47B30053DC84 /* ProfileView.swift */,
+				1406D3932A1290590053DC84 /* TabProfileView.swift */,
 				1406D38A2A0D58380053DC84 /* ProfileSettingsView.swift */,
 			);
 			path = Views;
@@ -374,10 +380,12 @@
 				14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */,
 				1406D3852A0D359F0053DC84 /* PostView.swift in Sources */,
 				14CAD5042A095B5100116B07 /* Profile.swift in Sources */,
+				1406D3902A1284CA0053DC84 /* RefreshableScrollView.swift in Sources */,
 				14CAD4D12A09491800116B07 /* RSConnectsApp.swift in Sources */,
 				1406D3832A0BF73F0053DC84 /* SpecificFeedView.swift in Sources */,
 				1406D38B2A0D58380053DC84 /* ProfileSettingsView.swift in Sources */,
 				1406D37D2A0BDD580053DC84 /* GroupsView.swift in Sources */,
+				1406D3942A1290590053DC84 /* TabProfileView.swift in Sources */,
 				1406D3792A0BDBA50053DC84 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

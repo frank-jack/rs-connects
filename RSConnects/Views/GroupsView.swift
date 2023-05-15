@@ -21,7 +21,7 @@ struct GroupsView: View {
         }
     }
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List {
                     ForEach(modelData.groups, id: \.self) { group in
@@ -59,6 +59,12 @@ struct GroupsView: View {
                     }, message: {
                         Text("Are you sure you want to delete this group?\nThis will move all posts in this group into the general channel.\nThis is an ADMIN ONLY ACTION and will affect many users.")
                     })
+                }
+                .refreshable {
+                    do {
+                        try await Task.sleep(nanoseconds: 1_000_000_000)
+                        modelData.getGroupData()
+                    } catch {}
                 }
                 if modelData.profile.isAdmin {
                     Divider()

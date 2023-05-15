@@ -37,7 +37,7 @@ struct ContentView: View {
                                 Label("Groups", systemImage: "list.bullet")
                             }
                             .tag(Tab.groups)
-                        ProfileView(profile: modelData.profile)
+                        TabProfileView(profile: modelData.profile)
                             .tabItem {
                                 Label("Profile", systemImage: "person.fill")
                             }
@@ -46,7 +46,7 @@ struct ContentView: View {
                     }
                 }
             } else {
-                NavigationView {
+                NavigationStack {
                     switch modelData.authState {
                     case .signIn:
                         SignIn()

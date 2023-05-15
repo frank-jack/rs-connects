@@ -21,14 +21,20 @@ struct GeneralFeedView: View {
         }
     }
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                ScrollView {
+                RefreshableScrollView {
                     ForEach(localPosts, id: \.self) { post in
                         if searchResults.contains(post) {
                             PostView(post: post)
                         }
                     }
+                }
+                .refreshable {
+                    do {
+                        try await Task.sleep(nanoseconds: 1_000_000_000)
+                        modelData.getPostData()
+                    } catch {}
                 }
                 Divider()
                     .frame(height: 3)

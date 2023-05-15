@@ -30,7 +30,7 @@ struct PostView: View {
                 .padding(.horizontal, -20)
                 Text("•"+howLongAgo(posted: post.date))
                     .font(.body)
-                    .padding(.horizontal, 35)
+                    .padding(.horizontal, 32.5)
                     .foregroundColor(.gray)
                 Spacer()
                 if modelData.profile.id == post.userId {

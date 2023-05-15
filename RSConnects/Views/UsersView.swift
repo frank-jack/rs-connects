@@ -18,9 +18,9 @@ struct UsersView: View {
         }
     }
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                ScrollView {
+                RefreshableScrollView {
                     ForEach(modelData.users, id: \.self) { user in
                         if searchResults.contains(user) {
                             Divider()
@@ -42,6 +42,12 @@ struct UsersView: View {
                             }
                         }
                     }
+                }
+                .refreshable {
+                    do {
+                        try await Task.sleep(nanoseconds: 1_000_000_000)
+                        modelData.getAllUserData()
+                    } catch {}
                 }
             }
         }
