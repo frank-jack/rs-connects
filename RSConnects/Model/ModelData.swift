@@ -70,7 +70,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getPostData()
+                    self.posts.append(Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image))
                 }
             } catch {
                 print("error")
@@ -91,7 +91,9 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getPostData()
+                    if let i = self.posts.firstIndex(where: {$0.id == post.id}) {
+                           posts[i] = Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image)
+                    }
                 }
             } catch {
                 print("error")
@@ -112,7 +114,9 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getPostData()
+                    if let i = self.posts.firstIndex(where: {$0.id == post.id}) {
+                        posts.remove(at: i)
+                    }
                 }
             } catch {
                 print("error")
@@ -161,7 +165,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getGroupData()
+                    self.groups.append(Group(id: group.id, name: group.name, image: group.image))
                 }
             } catch {
                 print("error")
@@ -182,7 +186,9 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getGroupData()
+                    if let i = self.groups.firstIndex(where: {$0.id == group.id}) {
+                        groups[i] = Group(id: group.id, name: group.name, image: group.image)
+                    }
                 }
             } catch {
                 print("error")
@@ -203,7 +209,9 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getGroupData()
+                    if let i = self.groups.firstIndex(where: {$0.id == group.id}) {
+                        groups.remove(at: i)
+                    }
                 }
             } catch {
                 print("error")
@@ -304,7 +312,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getAllUserData()
+                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, isAdmin: profile.isAdmin))
                 }
             } catch {
                 print("error")
@@ -326,7 +334,9 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getAllUserData()
+                    if let i = self.users.firstIndex(where: {$0.id == profile.id}) {
+                        users[i] = Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, isAdmin: profile.isAdmin)
+                    }
                 }
             } catch {
                 print("error")
@@ -347,7 +357,9 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.getAllUserData()
+                    if let i = self.users.firstIndex(where: {$0.id == profile.id}) {
+                        users.remove(at: i)
+                    }
                 }
             } catch {
                 print("error")
