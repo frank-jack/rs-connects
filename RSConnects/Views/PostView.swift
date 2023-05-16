@@ -102,7 +102,7 @@ struct PostView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 }
-                HStack { //ADD THIS TO ANOTHER POST VIEWS
+                HStack {
                     Text(String(post.likes.count))
                         .foregroundColor(.gray)
                     if !post.likes.contains(modelData.profile.id) {

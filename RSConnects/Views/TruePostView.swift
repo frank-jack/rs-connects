@@ -15,6 +15,7 @@ struct TruePostView: View {
     @State private var editingText = ""
     @State private var showDeleteAlert = false
     @State private var text = ""
+    @State private var numberOfComments = 0
     var body: some View {
         VStack {
             RefreshableScrollView {
@@ -103,6 +104,50 @@ struct TruePostView: View {
                         Image("Test")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                    }
+                    HStack {
+                        Text(String(post.likes.count))
+                            .foregroundColor(.gray)
+                        if !post.likes.contains(modelData.profile.id) {
+                            Button {
+                                var likes = post.likes
+                                likes.append(modelData.profile.id)
+                                modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                            } label: {
+                                Label("", systemImage: "heart")
+                                    .foregroundColor(.gray)
+                            }
+                        } else {
+                            Button {
+                                var likes = post.likes
+                                likes.remove(at: likes.firstIndex(where: {$0 == modelData.profile.id})!)
+                                modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                            } label: {
+                                Label("", systemImage: "heart.fill")
+                                    .foregroundColor(.pink)
+                            }
+                        }
+                        Text(String(numberOfComments))
+                            .foregroundColor(.gray)
+                            .onAppear {
+                                numberOfComments = 0
+                                for i in modelData.posts {
+                                    if i.groupId == post.id {
+                                        numberOfComments+=1
+                                    }
+                                }
+                            }
+                            .onChange(of: modelData.posts) { newValue in
+                                numberOfComments = 0
+                                for i in modelData.posts {
+                                    if i.groupId == post.id {
+                                        numberOfComments+=1
+                                    }
+                                }
+                            }
+                        Label("", systemImage: "bubble.left")
+                            .foregroundColor(.gray)
+                        Spacer()
                     }
                     Divider()
                 }
