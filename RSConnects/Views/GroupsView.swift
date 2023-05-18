@@ -28,42 +28,59 @@ struct GroupsView: View {
         NavigationStack {
             VStack {
                 List {
-                    ForEach(modelData.groups, id: \.self) { group in
-                        if searchResults.contains(group) {
-                            HStack {
-                                NavigationLink(group.name) {
-                                    SpecificFeedView(group: group)
-                                }
-                                Image(uiImage: group.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                                    .frame(width: 100, height: 100)
-                            }
-                        }
-                    }
-                    .onDelete { indexSet in //RESTRICT THIS TO BE ADMIN ONLY SOMEHOW
-                        var temp = modelData.groups
-                        temp.remove(atOffsets: indexSet)
-                        for i in modelData.groups {
-                            if !temp.contains(i) {
-                                groupToBeDeleted = i
-                            }
-                        }
-                        showDeleteAlert = true
-                    }
-                    .alert("Delete Group", isPresented: $showDeleteAlert, actions: {
-                        Button("Delete", role: .destructive, action: {
-                            modelData.deleteGroupData(group: groupToBeDeleted)
-                            for i in modelData.posts {
-                                if i.groupId == groupToBeDeleted.id {
-                                    modelData.putPostData(post: Post(id: i.id, userId: i.userId, text: i.text, groupId: "", image: i.image, date: i.date, likes: i.likes))
+                    if modelData.profile.isAdmin {
+                        ForEach(modelData.groups, id: \.self) { group in
+                            if searchResults.contains(group) {
+                                HStack {
+                                    NavigationLink(group.name) {
+                                        SpecificFeedView(group: group)
+                                    }
+                                    Image(uiImage: group.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                        .frame(width: 100, height: 100)
                                 }
                             }
+                        }
+                        .onDelete { indexSet in //RESTRICT THIS TO BE ADMIN ONLY SOMEHOW
+                            var temp = modelData.groups
+                            temp.remove(atOffsets: indexSet)
+                            for i in modelData.groups {
+                                if !temp.contains(i) {
+                                    groupToBeDeleted = i
+                                }
+                            }
+                            showDeleteAlert = true
+                        }
+                        .alert("Delete Group", isPresented: $showDeleteAlert, actions: {
+                            Button("Delete", role: .destructive, action: {
+                                modelData.deleteGroupData(group: groupToBeDeleted)
+                                for i in modelData.posts {
+                                    if i.groupId == groupToBeDeleted.id {
+                                        modelData.putPostData(post: Post(id: i.id, userId: i.userId, text: i.text, groupId: "", image: i.image, date: i.date, likes: i.likes))
+                                    }
+                                }
+                            })
+                        }, message: {
+                            Text("Are you sure you want to delete this group? This will move all posts in this group into the general channel. This is an ADMIN ONLY ACTION and will affect many users.")
                         })
-                    }, message: {
-                        Text("Are you sure you want to delete this group?\nThis will move all posts in this group into the general channel.\nThis is an ADMIN ONLY ACTION and will affect many users.")
-                    })
+                    } else {
+                        ForEach(modelData.groups, id: \.self) { group in
+                            if searchResults.contains(group) {
+                                HStack {
+                                    NavigationLink(group.name) {
+                                        SpecificFeedView(group: group)
+                                    }
+                                    Image(uiImage: group.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                        .frame(width: 100, height: 100)
+                                }
+                            }
+                        }
+                    }
                 }
                 .refreshable {
                     do {
