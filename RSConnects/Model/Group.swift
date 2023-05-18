@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct Group: Hashable {
     var id: String
     var name: String
-    var image: String
+    var image: UIImage
 }

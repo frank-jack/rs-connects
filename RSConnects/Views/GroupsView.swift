@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct GroupsView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var text = ""
-    @State private var groupToBeDeleted = Group(id: "", name: "", image: "")
+    @State private var groupToBeDeleted = Group(id: "", name: "", image: UIImage(imageLiteralResourceName: "Placeholder"))
     @State private var showDeleteAlert = false
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var image = UIImage(imageLiteralResourceName: "Placeholder")
+    @FocusState private var isFocused: Bool
     @State var searchText = ""
     var searchResults: [Group] {
         if searchText.isEmpty {
@@ -30,14 +34,15 @@ struct GroupsView: View {
                                 NavigationLink(group.name) {
                                     SpecificFeedView(group: group)
                                 }
-                                Image("Test")
+                                Image(uiImage: group.image)
                                     .resizable()
                                     .scaledToFit()
-                                    //.frame(width: 50, height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                    .frame(width: 100, height: 100)
                             }
                         }
                     }
-                    .onDelete { indexSet in
+                    .onDelete { indexSet in //RESTRICT THIS TO BE ADMIN ONLY SOMEHOW
                         var temp = modelData.groups
                         temp.remove(atOffsets: indexSet)
                         for i in modelData.groups {
@@ -69,15 +74,42 @@ struct GroupsView: View {
                 if modelData.profile.isAdmin {
                     Divider()
                         .frame(height: 3)
-                    HStack {
-                        TextField("Add group...", text: $text, axis: .vertical)
-                        Spacer()
-                        Button {
-                            modelData.postGroupData(group: Group(id: UUID().uuidString, name: text, image: ""))
-                            text = ""
-                        } label: {
-                            Label("", systemImage: "arrow.up.square.fill")
-                                .font(.title)
+                    VStack {
+                        HStack {
+                            TextField("Add group...", text: $text, axis: .vertical)
+                                .focused($isFocused)
+                            Spacer()
+                            PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                                Label("", systemImage: "photo.stack.fill")
+                            }
+                            .onChange(of: selectedItem) { newItem in
+                                Task {
+                                    if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
+                                        image = UIImage(data: data) ?? UIImage(imageLiteralResourceName: "Placeholder")
+                                    }
+                                }
+                            }
+                            Button {
+                                modelData.postGroupData(group: Group(id: UUID().uuidString, name: text, image: image))
+                                text = ""
+                                image = UIImage(imageLiteralResourceName: "Placeholder")
+                                isFocused = false
+                            } label: {
+                                Label("", systemImage: "arrow.up.square.fill")
+                                    .font(.title)
+                            }
+                        }
+                        if image != UIImage(imageLiteralResourceName: "Placeholder") {
+                            Divider()
+                                .frame(height: 3)
+                            Button {
+                                image = UIImage(imageLiteralResourceName: "Placeholder")
+                            } label: {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                            }
                         }
                     }
                 }

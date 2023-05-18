@@ -16,26 +16,23 @@ struct TruePostView: View {
     @State private var showDeleteAlert = false
     @State private var text = ""
     @State private var numberOfComments = 0
+    @FocusState private var isFocused: Bool
     var body: some View {
         VStack {
             RefreshableScrollView {
                 HStack {
                     NavigationLink(destination: ProfileView(profile: modelData.users.first(where: {$0.id == post.userId}) ?? Profile.default), label: { HStack {
-                        Image("Test")
+                        Image(uiImage: modelData.users.first(where: {$0.id == post.userId})?.image ?? UIImage(imageLiteralResourceName: "ProfilePic"))
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                             .clipShape(Circle())
-                            .frame(width: 90, height: 90)
+                            .frame(width: 50, height: 50)
                         Text(modelData.users.first(where: {$0.id == post.userId})?.username ?? "Username Error")
-                            .foregroundColor(.primary)
-                            .padding(.horizontal, -20)
+                            .foregroundColor(.primary) +
+                        Text(" •"+howLongAgo(posted: post.date))
+                            .foregroundColor(.gray)
                         }
                     })
-                    .padding(.horizontal, -20)
-                    Text("•"+howLongAgo(posted: post.date))
-                        .font(.body)
-                        .padding(.horizontal, 32.5)
-                        .foregroundColor(.gray)
                     Spacer()
                     if modelData.profile.id == post.userId {
                         if modelData.isEditing != post.id{
@@ -94,16 +91,22 @@ struct TruePostView: View {
                 VStack {
                     if modelData.isEditing != post.id {
                         Text(post.text)
+                            .font(.title)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .multilineTextAlignment(.leading)
-                        Image("Test")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
+                        if Int(post.image.size.width + post.image.size.height) != 2 {
+                            Image(uiImage: post.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        }
                     } else {
                         TextField(post.text, text: $editingText, axis: .vertical)
-                        Image("Test")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .font(.title)
+                        if Int(post.image.size.width + post.image.size.height) != 2 {
+                            Image(uiImage: post.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        }
                     }
                     HStack {
                         Text(String(post.likes.count))
@@ -151,7 +154,6 @@ struct TruePostView: View {
                     }
                     Divider()
                 }
-                .padding(.vertical, -20)
                 ForEach(comments, id: \.self) { comment in
                     CommentView(post: comment)
                 }
@@ -168,14 +170,16 @@ struct TruePostView: View {
             if modelData.isEditing.count == 0 {
                 HStack {
                     TextField("Comment on this post...", text: $text, axis: .vertical)
+                        .focused($isFocused)
                     Spacer()
                     Button {
                         let date = Date()
                         let df = DateFormatter()
                         df.dateStyle = DateFormatter.Style.short
                         df.timeStyle = DateFormatter.Style.medium
-                        modelData.postPostData(post: Post(id: UUID().uuidString, userId: modelData.profile.id, text: text, groupId: post.id, image: "", date: df.string(from: date), likes: []))
+                        modelData.postPostData(post: Post(id: UUID().uuidString, userId: modelData.profile.id, text: text, groupId: post.id, image: UIImage(imageLiteralResourceName: "Empty"), date: df.string(from: date), likes: []))
                         text = ""
+                        isFocused = false
                     } label: {
                         Label("", systemImage: "arrow.up.circle.fill")
                             .font(.title)

@@ -22,10 +22,10 @@ def handler(event, context):
         print(response)
     if 'POST' in event['httpMethod']:
         body = json.loads(event['body'])
-        response = addGroupInfo(body['id'], body['name'], body['image'])
+        response = addGroupInfo(body['id'], body['name'])
     if 'PUT' in event['httpMethod']:
         body = json.loads(event['body'])
-        response = updateGroupInfo(body['id'], body['name'], body['image'])
+        response = updateGroupInfo(body['id'], body['name'])
     if 'DELETE' in event['httpMethod']:
         body = json.loads(event['body'])
         response = deleteGroupInfo(body['id'])
@@ -42,17 +42,16 @@ def handler(event, context):
         'body': json.dumps(response)
     }
 
-def addGroupInfo(id, name, image):
+def addGroupInfo(id, name):
     response = tableGroupData.put_item(
         Item={
             'id': id,
-            'name': name,
-            'image': image
+            'name': name
         }
     )
     return response
 
-def updateGroupInfo(id, name, image):
+def updateGroupInfo(id, name):
     response = tableGroupData.delete_item(
         Key={
             'id': id,
@@ -61,8 +60,7 @@ def updateGroupInfo(id, name, image):
     response = tableGroupData.put_item(
         Item={
             'id': id,
-            'name': name,
-            'image': image
+            'name': name
         }
     )
     return response

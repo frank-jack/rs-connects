@@ -17,21 +17,17 @@ struct PostView: View {
         VStack {
             HStack {
                 NavigationLink(destination: ProfileView(profile: modelData.users.first(where: {$0.id == post.userId}) ?? Profile.default), label: { HStack {
-                    Image("Test")
+                    Image(uiImage: modelData.users.first(where: {$0.id == post.userId})?.image ?? UIImage(imageLiteralResourceName: "ProfilePic"))
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .clipShape(Circle())
-                        .frame(width: 90, height: 90)
+                        .frame(width: 50, height: 50)
                     Text(modelData.users.first(where: {$0.id == post.userId})?.username ?? "Username Error")
-                        .foregroundColor(.primary)
-                        .padding(.horizontal, -20)
+                        .foregroundColor(.primary) +
+                    Text(" •"+howLongAgo(posted: post.date))
+                        .foregroundColor(.gray)
                     }
                 })
-                .padding(.horizontal, -20)
-                Text("•"+howLongAgo(posted: post.date))
-                    .font(.body)
-                    .padding(.horizontal, 32.5)
-                    .foregroundColor(.gray)
                 Spacer()
                 if modelData.profile.id == post.userId {
                     if modelData.isEditing != post.id{
@@ -91,16 +87,20 @@ struct PostView: View {
                                 .foregroundColor(.primary)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .multilineTextAlignment(.leading)
-                            Image("Test")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
+                            if Int(post.image.size.width + post.image.size.height) != 2  {
+                                Image(uiImage: post.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            }
                         }
                     })
                 } else {
                     TextField(post.text, text: $editingText, axis: .vertical)
-                    Image("Test")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    if Int(post.image.size.width + post.image.size.height) != 2 {
+                        Image(uiImage: post.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
                 }
                 HStack {
                     Text(String(post.likes.count))
@@ -150,7 +150,6 @@ struct PostView: View {
                 }
                 Divider()
             }
-            .padding(.vertical, -20)
         }
     }
     func howLongAgo(posted: String) -> String {

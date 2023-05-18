@@ -20,7 +20,7 @@ struct SignIn: View {
                 modelData.showReset()
             }
             Spacer()
-            Button("Log In"){
+            Button("Sign In"){
                 Task {
                     await modelData.signIn(username: username, password: password)
                 }

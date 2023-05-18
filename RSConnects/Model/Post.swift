@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct Post: Hashable {
     var id: String
     var userId: String
     var text: String
     var groupId: String
-    var image: String
+    var image: UIImage
     var date: String
     var likes: [String]
 }

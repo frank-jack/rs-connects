@@ -61,6 +61,10 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
             "Region": "string"
+        },
+        "rsconnectsbucket": {
+            "BucketName": "string",
+            "Region": "string"
         }
     }
 }

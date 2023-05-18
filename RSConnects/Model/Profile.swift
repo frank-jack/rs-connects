@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct Profile: Hashable {
     var id: String
     var email: String
     var phone: String
     var username: String
-    var image: String
+    var image: UIImage
     var isAdmin: Bool
     
-    static let `default` = Profile(id: "", email: "", phone: "", username: "", image: "", isAdmin: false)
+    static let `default` = Profile(id: "", email: "", phone: "", username: "", image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: false)
 }

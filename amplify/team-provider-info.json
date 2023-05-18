@@ -13,20 +13,21 @@
     },
     "categories": {
       "auth": {
-        "rsconnects318cc322": {}
+        "rsconnects318cc322": {},
+        "true": {}
       },
       "function": {
         "rsConnectsUserData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsUserData-2b45475331766563616d-build.zip"
+          "s3Key": "amplify-builds/rsConnectsUserData-694e47442b6e734f6e39-build.zip"
         },
         "rsConnectsPostData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsPostData-4a4f47562f3854736a45-build.zip"
+          "s3Key": "amplify-builds/rsConnectsPostData-32757431595247474238-build.zip"
         },
         "rsConnectsGroupData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsGroupData-32364442595673313068-build.zip"
+          "s3Key": "amplify-builds/rsConnectsGroupData-724a515959334f386d51-build.zip"
         }
       }
     }

@@ -26,15 +26,14 @@ struct UsersView: View {
                             Divider()
                                 .frame(width: 3)
                             HStack {
-                                NavigationLink(destination: ProfileView(profile: user), label: {HStack {
-                                    Image("Test")
+                                NavigationLink(destination: ProfileView(profile: user), label: { HStack {
+                                    Image(uiImage: user.image)
                                         .resizable()
-                                        .scaledToFit()
+                                        .scaledToFill()
                                         .clipShape(Circle())
-                                        .frame(width: 90, height: 90)
+                                        .frame(width: 50, height: 50)
                                     Text(user.username)
                                         .foregroundColor(.primary)
-                                        .padding(.horizontal, -20)
                                     Spacer()
                                 }
                                 })

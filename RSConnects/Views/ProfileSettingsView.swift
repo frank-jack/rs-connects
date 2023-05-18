@@ -10,9 +10,14 @@ import SwiftUI
 struct ProfileSettingsView: View {
     @EnvironmentObject var modelData: ModelData
     var body: some View {
-        Button("Sign Out") {
-            Task {
-                await modelData.signOutLocally()
+        VStack {
+            Button("Sign Out") {
+                Task {
+                    await modelData.signOutLocally()
+                }
+            }
+            Button("Print Profile") {
+                print(modelData.profile)
             }
         }
     }

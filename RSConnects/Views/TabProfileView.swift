@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct TabProfileView: View {
     @EnvironmentObject var modelData: ModelData
@@ -13,6 +14,7 @@ struct TabProfileView: View {
     @State private var localPosts = [Post]()
     @State private var showAdminAlert = false
     @State private var showSettings = false
+    @State private var selectedItem: PhotosPickerItem? = nil
     var body: some View {
         NavigationStack {
             VStack {
@@ -40,10 +42,20 @@ struct TabProfileView: View {
                 }
                 VStack {
                     RefreshableScrollView {
-                        Image("Test")
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
+                        PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                            Image(uiImage: profile.image)
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 300, height: 300)
+                        }
+                        .onChange(of: selectedItem) { newItem in
+                            Task {
+                                if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
+                                    modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: profile.isAdmin))
+                                }
+                            }
+                        }
                         Spacer()
                         ForEach(localPosts, id: \.self) { post in
                             PostView(post: post)

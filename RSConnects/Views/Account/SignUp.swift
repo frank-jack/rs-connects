@@ -6,17 +6,21 @@
 //
 
 import SwiftUI
+import iPhoneNumberField
 
 struct SignUp: View {
     @EnvironmentObject var modelData: ModelData
     @State private var username = ""
     @State private var password = ""
     @State private var email = ""
+    @State private var phone = ""
     @State private var text1 = ""
     var body: some View {
         VStack {
             TextField("Username", text: $username)
             TextField("Email", text: $email)
+            iPhoneNumberField("Phone Number", text: $phone)
+                .maximumDigits(10)
             SecureField("Password", text: $password)
             Text(text1)
             Button("Sign Up") {
@@ -24,7 +28,7 @@ struct SignUp: View {
                     text1 = "Password must be at least 8 characters"
                 } else {
                     Task {
-                        await modelData.signUp(username: username, password: password, email: email)
+                        await modelData.signUp(username: username, password: password, email: email, phone: phone)
                     }
                 }
             }

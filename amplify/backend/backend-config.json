@@ -119,6 +119,11 @@
     "RSConnectsGroupStorage": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "rsconnectsbucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   }
 }
