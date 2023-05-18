@@ -116,6 +116,7 @@ struct TruePostView: View {
                                 var likes = post.likes
                                 likes.append(modelData.profile.id)
                                 modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                                post.likes = likes
                             } label: {
                                 Label("", systemImage: "heart")
                                     .foregroundColor(.gray)
@@ -125,6 +126,7 @@ struct TruePostView: View {
                                 var likes = post.likes
                                 likes.remove(at: likes.firstIndex(where: {$0 == modelData.profile.id})!)
                                 modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                                post.likes = likes
                             } label: {
                                 Label("", systemImage: "heart.fill")
                                     .foregroundColor(.pink)
