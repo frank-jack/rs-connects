@@ -15,6 +15,7 @@ struct ContentView: View {
         case feed
         case groups
         case users
+        case calendar
         case profile
     }
     var body: some View {
@@ -27,16 +28,21 @@ struct ContentView: View {
                                 Label("Users", systemImage: "magnifyingglass")
                             }
                             .tag(Tab.users)
-                        GeneralFeedView()
-                            .tabItem {
-                                Label("Feed", systemImage: "chart.bar.fill")
-                            }
-                            .tag(Tab.feed)
                         GroupsView()
                             .tabItem {
                                 Label("Groups", systemImage: "list.bullet")
                             }
                             .tag(Tab.groups)
+                        GeneralFeedView()
+                            .tabItem {
+                                Label("Feed", systemImage: "chart.bar.fill")
+                            }
+                            .tag(Tab.feed)
+                        CalendarView()
+                            .tabItem {
+                                Label("Calendar", systemImage: "calendar")
+                            }
+                            .tag(Tab.calendar)
                         TabProfileView(profile: modelData.profile)
                             .tabItem {
                                 Label("Profile", systemImage: "person.fill")

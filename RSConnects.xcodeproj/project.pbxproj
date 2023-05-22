@@ -41,6 +41,9 @@
 		14CAD4EF2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */; };
 		14CAD5042A095B5100116B07 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD5032A095B5100116B07 /* Profile.swift */; };
 		14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CAD5062A095D1F00116B07 /* ModelData.swift */; };
+		14FFB4E62A1BB1A300AD554E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FFB4E52A1BB1A300AD554E /* CalendarView.swift */; };
+		14FFB4E82A1BC78700AD554E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FFB4E72A1BC78700AD554E /* WebView.swift */; };
+		14FFB4EA2A1BC90900AD554E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FFB4E92A1BC90900AD554E /* Event.swift */; };
 		2F94A02E424089E63B551016 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C70B92C6DF1B5F465ED62DD4 /* amplifyconfiguration.json */; };
 		F5A91608D7FA7C35A16B070C /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 027B172F55CBEFE4C2FD2EE6 /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
@@ -95,6 +98,9 @@
 		14CAD4EE2A09491C00116B07 /* RSConnectsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSConnectsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		14CAD5032A095B5100116B07 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		14CAD5062A095D1F00116B07 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		14FFB4E52A1BB1A300AD554E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		14FFB4E72A1BC78700AD554E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		14FFB4E92A1BC90900AD554E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C70B92C6DF1B5F465ED62DD4 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				1406D38F2A1284CA0053DC84 /* RefreshableScrollView.swift */,
+				14FFB4E72A1BC78700AD554E /* WebView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 				14CAD5032A095B5100116B07 /* Profile.swift */,
 				1406D3782A0BDBA50053DC84 /* Post.swift */,
 				1406D37E2A0BDED50053DC84 /* Group.swift */,
+				14FFB4E92A1BC90900AD554E /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 				1406D3862A0D47B30053DC84 /* ProfileView.swift */,
 				1406D3932A1290590053DC84 /* TabProfileView.swift */,
 				1406D38A2A0D58380053DC84 /* ProfileSettingsView.swift */,
+				14FFB4E52A1BB1A300AD554E /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,12 +405,14 @@
 			files = (
 				14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */,
 				14832A6B2A0A990600F19B3C /* Reset.swift in Sources */,
+				14FFB4E62A1BB1A300AD554E /* CalendarView.swift in Sources */,
 				14832A6D2A0A991300F19B3C /* Confirm.swift in Sources */,
 				14832A652A0A98D600F19B3C /* Session.swift in Sources */,
 				14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */,
 				14CAD4D32A09491800116B07 /* ContentView.swift in Sources */,
 				1406D37F2A0BDED50053DC84 /* Group.swift in Sources */,
 				1406D37B2A0BDCB60053DC84 /* GeneralFeedView.swift in Sources */,
+				14FFB4E82A1BC78700AD554E /* WebView.swift in Sources */,
 				1406D3872A0D47B40053DC84 /* ProfileView.swift in Sources */,
 				1406D3892A0D56080053DC84 /* UsersView.swift in Sources */,
 				14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */,
@@ -416,6 +427,7 @@
 				1406D3792A0BDBA50053DC84 /* Post.swift in Sources */,
 				1406D3982A12A0050053DC84 /* CommentView.swift in Sources */,
 				1406D3962A129A6F0053DC84 /* TruePostView.swift in Sources */,
+				14FFB4EA2A1BC90900AD554E /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
