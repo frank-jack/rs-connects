@@ -91,12 +91,8 @@ struct GeneralFeedView: View {
                 df.dateStyle = DateFormatter.Style.short
                 df.timeStyle = DateFormatter.Style.medium
                 var temp = [Post]()
-                var ids = [String]()
                 for i in modelData.posts {
-                    ids.append(i.id)
-                }
-                for i in modelData.posts {
-                    if !ids.contains(i.groupId) {
+                    if i.groupId == "" {
                         temp.append(i)
                     }
                 }
@@ -107,12 +103,8 @@ struct GeneralFeedView: View {
                 df.dateStyle = DateFormatter.Style.short
                 df.timeStyle = DateFormatter.Style.medium
                 var temp = [Post]()
-                var ids = [String]()
                 for i in modelData.posts {
-                    ids.append(i.id)
-                }
-                for i in modelData.posts {
-                    if !ids.contains(i.groupId) {
+                    if i.groupId == "" {
                         temp.append(i)
                     }
                 }

@@ -11,10 +11,13 @@ import PhotosUI
 struct GroupsView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var text = ""
-    @State private var groupToBeDeleted = Group(id: "", name: "", image: UIImage(imageLiteralResourceName: "Placeholder"))
+    @State private var groupToBeDeleted = Group(id: "", name: "", type: "public", image: UIImage(imageLiteralResourceName: "Placeholder"))
     @State private var showDeleteAlert = false
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var image = UIImage(imageLiteralResourceName: "Placeholder")
+    @State private var type = "public"
+    @State private var showPrivateAlert = false
+    @State private var password = ""
     @FocusState private var isFocused: Bool
     @State var searchText = ""
     var searchResults: [Group] {
@@ -43,7 +46,7 @@ struct GroupsView: View {
                                 }
                             }
                         }
-                        .onDelete { indexSet in //RESTRICT THIS TO BE ADMIN ONLY SOMEHOW
+                        .onDelete { indexSet in
                             var temp = modelData.groups
                             temp.remove(atOffsets: indexSet)
                             for i in modelData.groups {
@@ -67,7 +70,7 @@ struct GroupsView: View {
                         })
                     } else {
                         ForEach(modelData.groups, id: \.self) { group in
-                            if searchResults.contains(group) {
+                            if searchResults.contains(group) && group.type != "admin" {
                                 HStack {
                                     NavigationLink(group.name) {
                                         SpecificFeedView(group: group)
@@ -96,6 +99,36 @@ struct GroupsView: View {
                             TextField("Add group...", text: $text, axis: .vertical)
                                 .focused($isFocused)
                             Spacer()
+                            Menu {
+                                Button("Public") {
+                                    type = "public"
+                                }
+                                Button("Private") {
+                                    showPrivateAlert = true
+                                }
+                                Button("Admin Only") {
+                                    type = "admin"
+                                }
+                            } label: {
+                                if type == "public" {
+                                    Label("", systemImage: "lock.open")
+                                } else if type == "admin" {
+                                    Label("", systemImage: "person.badge.key")
+                                } else {
+                                    Label("", systemImage: "lock")
+                                }
+                            }
+                            .alert("Create Private Group", isPresented: $showPrivateAlert, actions: {
+                                SecureField("Password", text: $password)
+                                Button("Cancel") {
+                                    showPrivateAlert = false
+                                    password = ""
+                                }
+                                Button("Set Password") {
+                                    type = "private:"+password
+                                }
+                            }, message: {
+                            })
                             PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
                                 Label("", systemImage: "photo.stack.fill")
                             }
@@ -107,9 +140,11 @@ struct GroupsView: View {
                                 }
                             }
                             Button {
-                                modelData.postGroupData(group: Group(id: UUID().uuidString, name: text, image: image))
+                                modelData.postGroupData(group: Group(id: UUID().uuidString, name: text, type: type, image: image))
                                 text = ""
                                 image = UIImage(imageLiteralResourceName: "Placeholder")
+                                type = "public"
+                                password = ""
                                 isFocused = false
                             } label: {
                                 Label("", systemImage: "arrow.up.square.fill")

@@ -215,7 +215,7 @@ final class ModelData: ObservableObject {
                     for i in jsonArray {
                         DispatchQueue.main.async { [self] in
                             Task {
-                                self.groups.append(Group(id: i["id"] as! String, name: i["name"] as! String, image: await getImage(imageKey: i["id"] as! String)))
+                                self.groups.append(Group(id: i["id"] as! String, name: i["name"] as! String, type: i["type"] as! String, image: await getImage(imageKey: i["id"] as! String)))
                             }
                         }
                     }
@@ -227,7 +227,7 @@ final class ModelData: ObservableObject {
         getTask.resume()
     }
     func postGroupData(group: Group) {
-        let params = ["id": group.id, "name": group.name] as! Dictionary<String, String>
+        let params = ["id": group.id, "type": group.type, "name": group.name] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/groupData")!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -239,7 +239,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.groups.append(Group(id: group.id, name: group.name, image: group.image))
+                    self.groups.append(Group(id: group.id, name: group.name, type: group.type, image: group.image))
                     self.postImage(image: group.image, imageKey: group.id)
                 }
             } catch {
@@ -249,7 +249,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func putGroupData(group: Group) {
-        let params = ["id": group.id, "name": group.name] as! Dictionary<String, String>
+        let params = ["id": group.id, "type": group.type, "name": group.name] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/groupData")!)
         request.httpMethod = "PUT"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -262,7 +262,7 @@ final class ModelData: ObservableObject {
                 print(json)
                 DispatchQueue.main.async { [self] in
                     if let i = self.groups.firstIndex(where: {$0.id == group.id}) {
-                        groups[i] = Group(id: group.id, name: group.name, image: group.image)
+                        groups[i] = Group(id: group.id, name: group.name, type: group.type, image: group.image)
                         self.putImage(image: group.image, imageKey: group.id)
                     }
                 }
@@ -273,7 +273,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func deleteGroupData(group: Group) {
-        let params = ["id": group.id, "name": group.name] as! Dictionary<String, String>
+        let params = ["id": group.id, "group": group.type, "name": group.name] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/groupData")!)
         request.httpMethod = "DELETE"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])

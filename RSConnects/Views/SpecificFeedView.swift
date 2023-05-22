@@ -10,11 +10,15 @@ import PhotosUI
 
 struct SpecificFeedView: View {
     @EnvironmentObject var modelData: ModelData
+    @Environment(\.presentationMode) var presentationMode
     var group: Group
     @State private var localPosts = [Post]()
     @State private var text = ""
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var image = UIImage(imageLiteralResourceName: "Empty")
+    @State private var showPasswordCheck = false
+    @State private var password = ""
+    @State private var passwordText = ""
     @FocusState private var isFocused: Bool
     @State var searchText = ""
     var searchResults: [Post] {
@@ -111,5 +115,27 @@ struct SpecificFeedView: View {
             localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search in "+group.name+"...")
+        .onAppear() {
+            if group.type.hasPrefix("private:") {
+                showPasswordCheck = true
+            }
+        }
+        .alert("Group Password", isPresented: $showPasswordCheck, actions: {
+            SecureField("Password", text: $password)
+            Button("Cancel") {
+                presentationMode.wrappedValue.dismiss()
+            }
+            Button("Enter Group") {
+                if password == group.type.dropFirst(8) {
+                    showPasswordCheck = false
+                    password = ""
+                    passwordText = ""
+                } else {
+                    passwordText = "Incorrect Password"
+                }
+            }
+        }, message: {
+            Text(passwordText)
+        })
     }
 }
