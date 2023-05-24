@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileSettingsView: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var showDeleteConfirm = false
+    @State private var deleteText = ""
     var body: some View {
         NavigationStack {
             Form {
@@ -25,11 +27,27 @@ struct ProfileSettingsView: View {
                             Label("Sign Out", systemImage: "door.left.hand.open")
                         }
                         Button {
-                            
+                            showDeleteConfirm = true
+                            deleteText = ""
                         } label: {
                             Label("Delete Account", systemImage: "trash")
                                 .foregroundColor(.red)
                         }
+                        .alert("Delete Account", isPresented: $showDeleteConfirm, actions: {
+                            TextField("Type 'delete'...", text: $deleteText)
+                            Button(role: .destructive) {
+                                if deleteText == "delete" {
+                                    modelData.deleteUserData(profile: modelData.profile)
+                                    Task {
+                                        await modelData.signOutGlobally()
+                                    }
+                                }
+                            } label: {
+                                Text("Delete")
+                            }
+                        }, message: {
+                            Text("Type 'delete' to confirm. This action cannot be undone.")
+                        })
                     }
                 }
             }
