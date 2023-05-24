@@ -21,6 +21,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/texts": {
+      "name": "/texts",
+      "lambdaFunction": "rsConnectsText",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

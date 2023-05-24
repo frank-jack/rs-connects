@@ -10,15 +10,30 @@ import SwiftUI
 struct ProfileSettingsView: View {
     @EnvironmentObject var modelData: ModelData
     var body: some View {
-        VStack {
-            Button("Sign Out") {
-                Task {
-                    await modelData.signOutLocally()
+        NavigationStack {
+            Form {
+                if modelData.profile.isAdmin {
+                    Section(header: Text("Admin Features")) {
+                        NavigationLink(destination: TextView(), label: {Label("Text Congregants", systemImage: "text.bubble")})
+                    }
+                    Section {
+                        Button {
+                            Task {
+                                await modelData.signOutLocally()
+                            }
+                        } label: {
+                            Label("Sign Out", systemImage: "door.left.hand.open")
+                        }
+                        Button {
+                            
+                        } label: {
+                            Label("Delete Account", systemImage: "trash")
+                                .foregroundColor(.red)
+                        }
+                    }
                 }
             }
-            Button("Print Profile") {
-                print(modelData.profile)
-            }
+            .navigationTitle("Settings")
         }
     }
 }

@@ -32,6 +32,10 @@
         "rsConnectsCalendar": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
           "s3Key": "amplify-builds/rsConnectsCalendar-7a4156332f78324d6272-build.zip"
+        },
+        "rsConnectsText": {
+          "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
+          "s3Key": "amplify-builds/rsConnectsText-503639377a7837596865-build.zip"
         }
       }
     }

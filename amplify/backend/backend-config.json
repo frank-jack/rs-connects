@@ -78,6 +78,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "rsConnectsText": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -104,6 +109,14 @@
         {
           "category": "function",
           "resourceName": "rsConnectsGroupData",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "rsConnectsText",
           "attributes": [
             "Name",
             "Arn"

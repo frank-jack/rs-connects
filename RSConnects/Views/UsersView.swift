@@ -38,6 +38,7 @@ struct UsersView: View {
                                 }
                                 })
                                 .frame(height: 50)
+                                .padding(.horizontal)
                             }
                         }
                     }

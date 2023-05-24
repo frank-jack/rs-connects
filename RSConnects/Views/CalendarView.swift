@@ -13,7 +13,7 @@ struct CalendarView: View {
         NavigationStack {
             VStack {
                 WebView(url: URL(string: "https://rodephshalom.org/calendar/")!)
-                    .onAppear {
+                    /*.onAppear {
                         var getRequest = URLRequest(url: URL(string: "https://rodephshalom.org/wp-json/tribe/events/v1/events/")!)
                         getRequest.httpMethod = "GET"
                         getRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -31,7 +31,7 @@ struct CalendarView: View {
                             }
                         })
                         getTask.resume()
-                    }
+                    }*/
             }
         }
     }
