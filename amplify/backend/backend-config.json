@@ -77,7 +77,18 @@
     "rsConnectsCalendar": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "RSConnectsTokenStorage",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
     },
     "rsConnectsText": {
       "build": true,
@@ -121,6 +132,14 @@
             "Name",
             "Arn"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "rsConnectsCalendar",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }
@@ -142,6 +161,10 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
+    },
+    "RSConnectsTokenStorage": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

@@ -21,13 +21,18 @@
 		1406D3962A129A6F0053DC84 /* TruePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3952A129A6B0053DC84 /* TruePostView.swift */; };
 		1406D3982A12A0050053DC84 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406D3972A12A0050053DC84 /* CommentView.swift */; };
 		1406D39D2A13CED20053DC84 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 1406D39C2A13CED20053DC84 /* iPhoneNumberField */; };
-		140F94B12A13DCB900E2C964 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 140F94B02A13DCB900E2C964 /* AWSAPIPlugin */; };
-		140F94B32A13DCB900E2C964 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 140F94B22A13DCB900E2C964 /* AWSCognitoAuthPlugin */; };
-		140F94B52A13DCB900E2C964 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 140F94B42A13DCB900E2C964 /* AWSDataStorePlugin */; };
-		140F94B72A13DCB900E2C964 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 140F94B62A13DCB900E2C964 /* AWSPluginsCore */; };
-		140F94B92A13DCB900E2C964 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 140F94B82A13DCB900E2C964 /* AWSS3StoragePlugin */; };
-		140F94BB2A13DCB900E2C964 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 140F94BA2A13DCB900E2C964 /* Amplify */; };
 		146C6AF22A1E5F9700F18708 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C6AF12A1E5F9700F18708 /* TextView.swift */; };
+		146C6AF72A1FC12300F18708 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6AF62A1FC12300F18708 /* AWSAPIPlugin */; };
+		146C6AF92A1FC12300F18708 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6AF82A1FC12300F18708 /* AWSCognitoAuthPlugin */; };
+		146C6AFB2A1FC12300F18708 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6AFA2A1FC12300F18708 /* AWSDataStorePlugin */; };
+		146C6AFD2A1FC12300F18708 /* AWSLocationGeoPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6AFC2A1FC12300F18708 /* AWSLocationGeoPlugin */; };
+		146C6AFF2A1FC12300F18708 /* AWSPinpointAnalyticsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6AFE2A1FC12300F18708 /* AWSPinpointAnalyticsPlugin */; };
+		146C6B012A1FC12300F18708 /* AWSPinpointPushNotificationsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B002A1FC12300F18708 /* AWSPinpointPushNotificationsPlugin */; };
+		146C6B032A1FC12300F18708 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B022A1FC12300F18708 /* AWSPluginsCore */; };
+		146C6B052A1FC12300F18708 /* AWSPredictionsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B042A1FC12300F18708 /* AWSPredictionsPlugin */; };
+		146C6B072A1FC12300F18708 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B062A1FC12300F18708 /* AWSS3StoragePlugin */; };
+		146C6B092A1FC12300F18708 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B082A1FC12300F18708 /* Amplify */; };
+		146C6B0B2A1FC12300F18708 /* CoreMLPredictionsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B0A2A1FC12300F18708 /* CoreMLPredictionsPlugin */; };
 		14832A652A0A98D600F19B3C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A642A0A98D600F19B3C /* Session.swift */; };
 		14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A662A0A98EC00F19B3C /* SignIn.swift */; };
 		14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A682A0A98FC00F19B3C /* SignUp.swift */; };
@@ -111,13 +116,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				140F94B12A13DCB900E2C964 /* AWSAPIPlugin in Frameworks */,
-				140F94BB2A13DCB900E2C964 /* Amplify in Frameworks */,
+				146C6AF72A1FC12300F18708 /* AWSAPIPlugin in Frameworks */,
+				146C6AFF2A1FC12300F18708 /* AWSPinpointAnalyticsPlugin in Frameworks */,
+				146C6AFD2A1FC12300F18708 /* AWSLocationGeoPlugin in Frameworks */,
 				1406D39D2A13CED20053DC84 /* iPhoneNumberField in Frameworks */,
-				140F94B32A13DCB900E2C964 /* AWSCognitoAuthPlugin in Frameworks */,
-				140F94B52A13DCB900E2C964 /* AWSDataStorePlugin in Frameworks */,
-				140F94B72A13DCB900E2C964 /* AWSPluginsCore in Frameworks */,
-				140F94B92A13DCB900E2C964 /* AWSS3StoragePlugin in Frameworks */,
+				146C6B092A1FC12300F18708 /* Amplify in Frameworks */,
+				146C6B052A1FC12300F18708 /* AWSPredictionsPlugin in Frameworks */,
+				146C6B072A1FC12300F18708 /* AWSS3StoragePlugin in Frameworks */,
+				146C6B032A1FC12300F18708 /* AWSPluginsCore in Frameworks */,
+				146C6B0B2A1FC12300F18708 /* CoreMLPredictionsPlugin in Frameworks */,
+				146C6AF92A1FC12300F18708 /* AWSCognitoAuthPlugin in Frameworks */,
+				146C6B012A1FC12300F18708 /* AWSPinpointPushNotificationsPlugin in Frameworks */,
+				146C6AFB2A1FC12300F18708 /* AWSDataStorePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,12 +289,17 @@
 			name = RSConnects;
 			packageProductDependencies = (
 				1406D39C2A13CED20053DC84 /* iPhoneNumberField */,
-				140F94B02A13DCB900E2C964 /* AWSAPIPlugin */,
-				140F94B22A13DCB900E2C964 /* AWSCognitoAuthPlugin */,
-				140F94B42A13DCB900E2C964 /* AWSDataStorePlugin */,
-				140F94B62A13DCB900E2C964 /* AWSPluginsCore */,
-				140F94B82A13DCB900E2C964 /* AWSS3StoragePlugin */,
-				140F94BA2A13DCB900E2C964 /* Amplify */,
+				146C6AF62A1FC12300F18708 /* AWSAPIPlugin */,
+				146C6AF82A1FC12300F18708 /* AWSCognitoAuthPlugin */,
+				146C6AFA2A1FC12300F18708 /* AWSDataStorePlugin */,
+				146C6AFC2A1FC12300F18708 /* AWSLocationGeoPlugin */,
+				146C6AFE2A1FC12300F18708 /* AWSPinpointAnalyticsPlugin */,
+				146C6B002A1FC12300F18708 /* AWSPinpointPushNotificationsPlugin */,
+				146C6B022A1FC12300F18708 /* AWSPluginsCore */,
+				146C6B042A1FC12300F18708 /* AWSPredictionsPlugin */,
+				146C6B062A1FC12300F18708 /* AWSS3StoragePlugin */,
+				146C6B082A1FC12300F18708 /* Amplify */,
+				146C6B0A2A1FC12300F18708 /* CoreMLPredictionsPlugin */,
 			);
 			productName = RSConnects;
 			productReference = 14CAD4CD2A09491800116B07 /* RSConnects.app */;
@@ -360,7 +375,7 @@
 			mainGroup = 14CAD4C42A09491800116B07;
 			packageReferences = (
 				1406D39B2A13CED20053DC84 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
-				140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 			);
 			productRefGroup = 14CAD4CE2A09491800116B07 /* Products */;
 			projectDirPath = "";
@@ -779,7 +794,7 @@
 				minimumVersion = 0.9.0;
 			};
 		};
-		140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+		146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
 			requirement = {
@@ -795,35 +810,60 @@
 			package = 1406D39B2A13CED20053DC84 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
 			productName = iPhoneNumberField;
 		};
-		140F94B02A13DCB900E2C964 /* AWSAPIPlugin */ = {
+		146C6AF62A1FC12300F18708 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSAPIPlugin;
 		};
-		140F94B22A13DCB900E2C964 /* AWSCognitoAuthPlugin */ = {
+		146C6AF82A1FC12300F18708 /* AWSCognitoAuthPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSCognitoAuthPlugin;
 		};
-		140F94B42A13DCB900E2C964 /* AWSDataStorePlugin */ = {
+		146C6AFA2A1FC12300F18708 /* AWSDataStorePlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSDataStorePlugin;
 		};
-		140F94B62A13DCB900E2C964 /* AWSPluginsCore */ = {
+		146C6AFC2A1FC12300F18708 /* AWSLocationGeoPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSLocationGeoPlugin;
+		};
+		146C6AFE2A1FC12300F18708 /* AWSPinpointAnalyticsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPinpointAnalyticsPlugin;
+		};
+		146C6B002A1FC12300F18708 /* AWSPinpointPushNotificationsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPinpointPushNotificationsPlugin;
+		};
+		146C6B022A1FC12300F18708 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSPluginsCore;
 		};
-		140F94B82A13DCB900E2C964 /* AWSS3StoragePlugin */ = {
+		146C6B042A1FC12300F18708 /* AWSPredictionsPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPredictionsPlugin;
+		};
+		146C6B062A1FC12300F18708 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = AWSS3StoragePlugin;
 		};
-		140F94BA2A13DCB900E2C964 /* Amplify */ = {
+		146C6B082A1FC12300F18708 /* Amplify */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 140F94AF2A13DCB900E2C964 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = Amplify;
+		};
+		146C6B0A2A1FC12300F18708 /* CoreMLPredictionsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = CoreMLPredictionsPlugin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

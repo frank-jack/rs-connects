@@ -28,6 +28,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/calendar": {
+      "name": "/calendar",
+      "lambdaFunction": "rsConnectsCalendar",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

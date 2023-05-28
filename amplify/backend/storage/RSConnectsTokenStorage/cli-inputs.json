@@ -1,0 +1,10 @@
+{
+  "resourceName": "RSConnectsTokenStorage",
+  "tableName": "RSConnectsTokenStorage",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

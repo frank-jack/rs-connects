@@ -17,6 +17,7 @@ struct SpecificFeedView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var image = UIImage(imageLiteralResourceName: "Empty")
     @State private var showPasswordCheck = false
+    @State private var passwordChecked = false
     @State private var password = ""
     @State private var passwordText = ""
     @FocusState private var isFocused: Bool
@@ -116,8 +117,10 @@ struct SpecificFeedView: View {
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search in "+group.name+"...")
         .onAppear() {
-            if group.type.hasPrefix("private:") {
-                showPasswordCheck = true
+            if group.type.hasPrefix("private:") { //VERY IMPORTANT: DON'T RECHECK PASSWORD WHEN CHANGING PAGES WITHIN GROUP
+                if !passwordChecked {
+                    showPasswordCheck = true
+                }
             }
         }
         .alert("Group Password", isPresented: $showPasswordCheck, actions: {
@@ -128,6 +131,7 @@ struct SpecificFeedView: View {
             Button("Enter Group") {
                 if password == group.type.dropFirst(8) {
                     showPasswordCheck = false
+                    passwordChecked = true
                     password = ""
                     passwordText = ""
                 } else {

@@ -4,6 +4,8 @@ import sys
 import os
 import ast
 
+sns = boto3.client('sns')
+
 def handler(event, context):
   print('received event:')
   print(event)
@@ -24,28 +26,18 @@ def handler(event, context):
   }
 
 def sendText(pn, message): 
-    print(pn)
-    print(message)
     try:
-        client = boto3.client(
-            "sns",
-            aws_access_key_id=os.environ.get(''), 
-            aws_secret_access_key=os.environ.get(''),
-            region_name="us-east-1"
-        )
-        
-        client.set_sms_attributes(
-            attributes={
-                'DefaultSMSType': 'Transactional',
-                'DeliveryStatusSuccessSamplingRate': '100',
-                'DefaultSenderID': 'CodeBriefly'
-            }
-        )
-        
-        response = client.publish(
-            PhoneNumber="+1"+pn,
+        response = sns.publish(
+            #TopicArn='arn:aws:sns:us-east-1:417990662395:RSConnects',
+            PhoneNumber='+1'+pn,
             Message=message
-        ) 
-        print(response)
-    except:
-        print('Error', sys.exc_info()[0])
+        )
+        
+        print('Message published')
+        return {
+            'statusCode': 200,
+            'body': json.dumps(response)
+        }
+    except Exception as e:
+        print('Failed to publish message')
+        return {'status': 'error', 'message': str(e)}
