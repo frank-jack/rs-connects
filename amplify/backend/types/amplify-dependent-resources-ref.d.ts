@@ -77,6 +77,14 @@ export type AmplifyDependentResourcesAttributes = {
         "rsconnectsbucket": {
             "BucketName": "string",
             "Region": "string"
+        },
+        "RSConnectsTokenStorage": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
         }
     }
 }

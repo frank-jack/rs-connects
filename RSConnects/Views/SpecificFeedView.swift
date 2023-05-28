@@ -117,7 +117,7 @@ struct SpecificFeedView: View {
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search in "+group.name+"...")
         .onAppear() {
-            if group.type.hasPrefix("private:") { //VERY IMPORTANT: DON'T RECHECK PASSWORD WHEN CHANGING PAGES WITHIN GROUP
+            if group.type.hasPrefix("private:") {
                 if !passwordChecked {
                     showPasswordCheck = true
                 }

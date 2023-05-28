@@ -18,37 +18,37 @@ struct ProfileSettingsView: View {
                     Section(header: Text("Admin Features")) {
                         NavigationLink(destination: TextView(), label: {Label("Text Congregants", systemImage: "text.bubble")})
                     }
-                    Section {
-                        Button {
-                            Task {
-                                await modelData.signOutLocally()
-                            }
-                        } label: {
-                            Label("Sign Out", systemImage: "door.left.hand.open")
+                }
+                Section {
+                    Button {
+                        Task {
+                            await modelData.signOutLocally()
                         }
-                        Button {
-                            showDeleteConfirm = true
-                            deleteText = ""
-                        } label: {
-                            Label("Delete Account", systemImage: "trash")
-                                .foregroundColor(.red)
-                        }
-                        .alert("Delete Account", isPresented: $showDeleteConfirm, actions: {
-                            TextField("Type 'delete'...", text: $deleteText)
-                            Button(role: .destructive) {
-                                if deleteText == "delete" {
-                                    modelData.deleteUserData(profile: modelData.profile)
-                                    Task {
-                                        await modelData.signOutGlobally()
-                                    }
-                                }
-                            } label: {
-                                Text("Delete")
-                            }
-                        }, message: {
-                            Text("Type 'delete' to confirm. This action cannot be undone.")
-                        })
+                    } label: {
+                        Label("Sign Out", systemImage: "door.left.hand.open")
                     }
+                    Button {
+                        showDeleteConfirm = true
+                        deleteText = ""
+                    } label: {
+                        Label("Delete Account", systemImage: "trash")
+                            .foregroundColor(.red)
+                    }
+                    .alert("Delete Account", isPresented: $showDeleteConfirm, actions: {
+                        TextField("Type 'delete'...", text: $deleteText)
+                        Button(role: .destructive) {
+                            if deleteText == "delete" {
+                                modelData.deleteUserData(profile: modelData.profile)
+                                Task {
+                                    await modelData.signOutGlobally()
+                                }
+                            }
+                        } label: {
+                            Text("Delete")
+                        }
+                    }, message: {
+                        Text("Type 'delete' to confirm. This action cannot be undone.")
+                    })
                 }
             }
             .navigationTitle("Settings")
