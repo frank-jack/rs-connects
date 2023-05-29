@@ -32,6 +32,13 @@
       "service": "Lambda",
       "dependsOn": [
         {
+          "category": "auth",
+          "resourceName": "rsconnects318cc322",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
           "category": "storage",
           "resourceName": "RSConnectsUserDataStorage",
           "attributes": [
@@ -94,6 +101,12 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "rsconnects01c06141": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
     }
   },
   "api": {

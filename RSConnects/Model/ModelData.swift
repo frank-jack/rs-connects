@@ -13,7 +13,6 @@ import UIKit
 enum AuthState {
     case signUp
     case signIn
-    case confirmCode(email: String, username: String, password: String, phone: String)
     case session(user: AuthUser)
     case reset
 }
@@ -474,37 +473,16 @@ final class ModelData: ObservableObject {
         let userAttributes = [AuthUserAttribute(.email, value: email)]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         do {
-            let signUpResult = try await Amplify.Auth.signUp(
+            _ = try await Amplify.Auth.signUp(
                 username: username,
                 password: password,
                 options: options
             )
-            if case let .confirmUser(deliveryDetails, _, userId) = signUpResult.nextStep {
-                DispatchQueue.main.async { [self] in
-                    authState = .confirmCode(email: email, username: username, password: password, phone: phone)
-                }
-                print("Delivery details \(String(describing: deliveryDetails)) for userId: \(String(describing: userId))")
-            } else {
-                print("SignUp Complete")
-            }
-        } catch let error as AuthError {
-            print("An error occurred while registering a user \(error)")
-        } catch {
-            print("Unexpected error: \(error)")
-        }
-    }
-    
-    func confirm(for username: String, with confirmationCode: String, email: String, password: String, phone: String) async {
-        do {
-            let confirmSignUpResult = try await Amplify.Auth.confirmSignUp(
-                for: username,
-                confirmationCode: confirmationCode
-            )
-            print("Confirm sign up result completed: \(confirmSignUpResult.isSignUpComplete)")
+            print("SignUp Complete")
             await signIn(username: username, password: password)
             await postUserData(profile: Profile(id: try Amplify.Auth.getCurrentUser().userId, email: email, phone: phone, username: username, image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: false))
         } catch let error as AuthError {
-            print("An error occurred while confirming sign up \(error)")
+            print("An error occurred while registering a user \(error)")
         } catch {
             print("Unexpected error: \(error)")
         }

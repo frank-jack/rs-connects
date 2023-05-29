@@ -60,9 +60,6 @@ struct ContentView: View {
                     case .signUp:
                         SignUp()
                             .environmentObject(modelData)
-                    case .confirmCode(let email, let username, let password, let phone):
-                        Confirm(email: email, username: username, password: password, phone: phone)
-                            .environmentObject(modelData)
                     case .reset:
                         Reset()
                             .environmentObject(modelData)

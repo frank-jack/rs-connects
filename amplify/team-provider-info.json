@@ -19,7 +19,7 @@
       "function": {
         "rsConnectsUserData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsUserData-694e47442b6e734f6e39-build.zip"
+          "s3Key": "amplify-builds/rsConnectsUserData-616b3168494d78517643-build.zip"
         },
         "rsConnectsPostData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
@@ -36,6 +36,10 @@
         "rsConnectsText": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
           "s3Key": "amplify-builds/rsConnectsText-616c364435306d2f7072-build.zip"
+        },
+        "rsconnects01c06141": {
+          "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
+          "s3Key": "amplify-builds/rsconnects01c06141-3170546b6b646a61442b-build.zip"
         }
       }
     }
