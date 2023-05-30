@@ -318,7 +318,7 @@ final class ModelData: ObservableObject {
                                 if i["isAdmin"] as! String == "true" {
                                     isAdmin = true
                                 }
-                                self.users.append(Profile(id: i["id"] as! String, email: i["email"] as! String, phone: i["phone"] as! String, username: i["username"] as! String, image: await getImage(imageKey: i["id"] as! String), isAdmin: isAdmin))
+                                self.users.append(Profile(id: i["id"] as! String, email: i["email"] as! String, phone: i["phone"] as! String, username: i["username"] as! String, image: await getImage(imageKey: i["id"] as! String), isAdmin: isAdmin, token: i["token"] as! String))
                             }
                         }
                     }
@@ -366,7 +366,7 @@ final class ModelData: ObservableObject {
                                 isAdmin = true
                             }
                         }
-                        self.profile = Profile(id: id, email: email, phone: phone, username: username, image: await getImage(imageKey: id), isAdmin: isAdmin)
+                        self.profile = Profile(id: id, email: email, phone: phone, username: username, image: await getImage(imageKey: id), isAdmin: isAdmin, token: mainToken)
                     }
                 }
             } catch {
@@ -376,7 +376,7 @@ final class ModelData: ObservableObject {
         getTask.resume()
     }
     func postUserData(profile: Profile) {
-        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin)] as! Dictionary<String, String>
+        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin), "token": profile.token] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData")!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -388,7 +388,7 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin))
+                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin, token: profile.token))
                     self.postImage(image: profile.image, imageKey: profile.id)
                 }
             } catch {
@@ -399,7 +399,7 @@ final class ModelData: ObservableObject {
         getUserData(id: profile.id)
     }
     func putUserData(profile: Profile) {
-        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin)] as! Dictionary<String, String>
+        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin), "token": profile.token] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData")!)
         request.httpMethod = "PUT"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -412,7 +412,7 @@ final class ModelData: ObservableObject {
                 print(json)
                 DispatchQueue.main.async { [self] in
                     if let i = self.users.firstIndex(where: {$0.id == profile.id}) {
-                        users[i] = Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin)
+                        users[i] = Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin, token: profile.token)
                         self.putImage(image: profile.image, imageKey: profile.id)
                         if users[i].id == self.profile.id {
                             self.profile = users[i]
@@ -426,7 +426,7 @@ final class ModelData: ObservableObject {
         task.resume()
     }
     func deleteUserData(profile: Profile) {
-        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin)] as! Dictionary<String, String>
+        let params = ["id": profile.id, "email": profile.email, "phone": profile.phone, "username": profile.username, "isAdmin": String(profile.isAdmin), "token": profile.token] as! Dictionary<String, String>
         var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/userData")!)
         request.httpMethod = "DELETE"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
@@ -480,7 +480,7 @@ final class ModelData: ObservableObject {
             )
             print("SignUp Complete")
             await signIn(username: username, password: password)
-            await postUserData(profile: Profile(id: try Amplify.Auth.getCurrentUser().userId, email: email, phone: phone, username: username, image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: false))
+            await postUserData(profile: Profile(id: try Amplify.Auth.getCurrentUser().userId, email: email, phone: phone, username: username, image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: false, token: mainToken))
         } catch let error as AuthError {
             print("An error occurred while registering a user \(error)")
         } catch {

@@ -1,13 +1,4 @@
 {
   "lambdaLayers": [],
-  "permissions": {
-    "storage": {
-      "RSConnectsTokenStorage": [
-        "create",
-        "read",
-        "update",
-        "delete"
-      ]
-    }
-  }
+  "permissions": {}
 }

@@ -1,12 +1,6 @@
 import json
 import urllib3
 
-tableName = os.environ['STORAGE_RSCONNECTSTOKENSTORAGE_NAME']
-dynamodb = boto3.resource('dynamodb')
-tokenTable = dynamodb.Table(tableName)
-
-sns = boto3.client('sns')
-
 def handler(event, context):
   print('received event:')
   print(event)
@@ -25,6 +19,4 @@ def handler(event, context):
       },
       'body': json.dumps(data)
   }
-
-def createEndpoint(token): 
     

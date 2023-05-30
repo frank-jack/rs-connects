@@ -15,18 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "storageRSConnectsTokenStorageName": {
-      "Type": "String",
-      "Default": "storageRSConnectsTokenStorageName"
-    },
-    "storageRSConnectsTokenStorageArn": {
-      "Type": "String",
-      "Default": "storageRSConnectsTokenStorageArn"
-    },
-    "storageRSConnectsTokenStorageStreamArn": {
-      "Type": "String",
-      "Default": "storageRSConnectsTokenStorageStreamArn"
     }
   },
   "Conditions": {
@@ -81,15 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "STORAGE_RSCONNECTSTOKENSTORAGE_NAME": {
-              "Ref": "storageRSConnectsTokenStorageName"
-            },
-            "STORAGE_RSCONNECTSTOKENSTORAGE_ARN": {
-              "Ref": "storageRSConnectsTokenStorageArn"
-            },
-            "STORAGE_RSCONNECTSTOKENSTORAGE_STREAMARN": {
-              "Ref": "storageRSConnectsTokenStorageStreamArn"
             }
           }
         },
@@ -181,58 +160,6 @@
                   }
                 ]
               }
-            }
-          ]
-        }
-      }
-    },
-    "AmplifyResourcesPolicy": {
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ],
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "amplify-lambda-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:Get*",
-                "dynamodb:BatchGetItem",
-                "dynamodb:List*",
-                "dynamodb:Describe*",
-                "dynamodb:Scan",
-                "dynamodb:Query",
-                "dynamodb:Update*",
-                "dynamodb:RestoreTable*",
-                "dynamodb:Delete*"
-              ],
-              "Resource": [
-                {
-                  "Ref": "storageRSConnectsTokenStorageArn"
-                },
-                {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      {
-                        "Ref": "storageRSConnectsTokenStorageArn"
-                      },
-                      "index/*"
-                    ]
-                  ]
-                }
-              ]
             }
           ]
         }

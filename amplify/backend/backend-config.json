@@ -85,17 +85,7 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "RSConnectsTokenStorage",
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ]
-        }
-      ]
+      "dependsOn": []
     },
     "rsConnectsText": {
       "build": true,
@@ -174,10 +164,6 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
-    },
-    "RSConnectsTokenStorage": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
     }
   }
 }

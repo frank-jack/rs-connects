@@ -15,6 +15,7 @@ struct Profile: Hashable {
     var username: String
     var image: UIImage
     var isAdmin: Bool
+    var token: String
     
-    static let `default` = Profile(id: "", email: "", phone: "", username: "", image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: false)
+    static let `default` = Profile(id: "", email: "", phone: "", username: "", image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: false, token: "")
 }

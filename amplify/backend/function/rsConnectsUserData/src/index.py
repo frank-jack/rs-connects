@@ -26,10 +26,10 @@ def handler(event, context):
         print(response)
     if 'POST' in event['httpMethod']:
         body = json.loads(event['body'])
-        response = addUserInfo(body['id'], body['email'], body['phone'], body['username'], body['isAdmin'])
+        response = addUserInfo(body['id'], body['email'], body['phone'], body['username'], body['isAdmin'], body['token'])
     if 'PUT' in event['httpMethod']:
         body = json.loads(event['body'])
-        response = updateUserInfo(body['id'], body['email'], body['phone'], body['username'], body['isAdmin'])
+        response = updateUserInfo(body['id'], body['email'], body['phone'], body['username'], body['isAdmin'], body['token'])
     if 'DELETE' in event['httpMethod']:
         body = json.loads(event['body'])
         response = deleteUserInfo(body['id'])
@@ -46,19 +46,20 @@ def handler(event, context):
         'body': json.dumps(response)
     }
 
-def addUserInfo(id, email, phone, username, isAdmin):
+def addUserInfo(id, email, phone, username, isAdmin, token):
     response = tableUserData.put_item(
         Item={
             'id': id,
             'email': email,
             'phone': phone,
             'username': username,
-            'isAdmin': isAdmin
+            'isAdmin': isAdmin,
+            'token': token
         }
     )
     return response
 
-def updateUserInfo(id, email, phone, username, isAdmin):
+def updateUserInfo(id, email, phone, username, isAdmin, token):
     response = tableUserData.delete_item(
         Key={
             'id': id,
@@ -70,7 +71,8 @@ def updateUserInfo(id, email, phone, username, isAdmin):
             'email': email,
             'phone': phone,
             'username': username,
-            'isAdmin': isAdmin
+            'isAdmin': isAdmin,
+            'token': token
         }
     )
     return response

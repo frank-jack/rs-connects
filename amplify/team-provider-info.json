@@ -19,7 +19,7 @@
       "function": {
         "rsConnectsUserData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsUserData-616b3168494d78517643-build.zip"
+          "s3Key": "amplify-builds/rsConnectsUserData-556d555468356d556271-build.zip"
         },
         "rsConnectsPostData": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
@@ -31,11 +31,11 @@
         },
         "rsConnectsCalendar": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsCalendar-3945674e37774d73616e-build.zip"
+          "s3Key": "amplify-builds/rsConnectsCalendar-4d456854662f5767564f-build.zip"
         },
         "rsConnectsText": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsText-616c364435306d2f7072-build.zip"
+          "s3Key": "amplify-builds/rsConnectsText-62326d546d6859325245-build.zip"
         },
         "rsconnects01c06141": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",

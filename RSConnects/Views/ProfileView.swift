@@ -32,7 +32,7 @@ struct ProfileView: View {
                     .font(.caption)
                     .alert("Make Admin", isPresented: $showAdminAlert, actions: {
                         Button("Make Admin", role: .destructive, action: {
-                            modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: true))
+                            modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: true, token: profile.token))
                         })
                     }, message: {
                         Text("Are you sure you want to make this user an Admin? This will grant the user admin abilties and cannot be undone.")
@@ -56,7 +56,7 @@ struct ProfileView: View {
                         .onChange(of: selectedItem) { newItem in
                             Task {
                                 if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
-                                    modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: profile.isAdmin))
+                                    modelData.putUserData(profile: Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: UIImage(data: data) ?? UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: profile.isAdmin, token: profile.token))
                                 }
                             }
                         }

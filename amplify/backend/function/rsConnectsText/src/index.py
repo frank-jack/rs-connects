@@ -25,19 +25,4 @@ def handler(event, context):
       'body': json.dumps('Hello from your new Amplify Python lambda!')
   }
 
-def sendText(pn, message): 
-    try:
-        response = sns.publish(
-            #TopicArn='arn:aws:sns:us-east-1:417990662395:RSConnects',
-            PhoneNumber='+1'+pn,
-            Message=message
-        )
         
-        print('Message published')
-        return {
-            'statusCode': 200,
-            'body': json.dumps(response)
-        }
-    except Exception as e:
-        print('Failed to publish message')
-        return {'status': 'error', 'message': str(e)}

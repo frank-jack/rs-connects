@@ -10,6 +10,8 @@ import Amplify
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
 
+var mainToken = ""
+
 @main
 struct RSConnectsApp: App {
     @StateObject private var modelData = ModelData()
@@ -55,25 +57,6 @@ func registerForNotifications() {
     UIApplication.shared.registerForRemoteNotifications()
 }
 
-func postDeviceToken(token: String) {
-    let params = ["id": UUID().uuidString, "token": token] as! Dictionary<String, String>
-    var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/calendar")!)
-    request.httpMethod = "POST"
-    request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    let session = URLSession.shared
-    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-        print(response!)
-        do {
-            let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-            print(json)
-        } catch {
-            print("error")
-        }
-    })
-    task.resume()
-}
-
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
@@ -83,6 +66,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
+        mainToken = token
         print("Device Token: \(token)")
     };
 
