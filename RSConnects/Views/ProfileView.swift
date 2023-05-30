@@ -92,7 +92,9 @@ struct ProfileView: View {
                 }
                 for i in modelData.posts {
                     if i.userId == profile.id && !ids.contains(i.groupId) {
-                        temp.append(i)
+                        if modelData.profile.id == profile.id || i.groupId == "" || modelData.groups.first(where: {$0.id == i.groupId})?.type == "public" {
+                            temp.append(i)
+                        }
                     }
                 }
                 localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
@@ -108,7 +110,9 @@ struct ProfileView: View {
                 }
                 for i in modelData.posts {
                     if i.userId == profile.id && !ids.contains(i.groupId) {
-                        temp.append(i)
+                        if modelData.profile.id == profile.id || i.groupId == "" || modelData.groups.first(where: {$0.id == i.groupId})?.type == "public" {
+                            temp.append(i)
+                        }
                     }
                 }
                 localPosts = temp.sorted {df.date(from: $0.date)! > df.date(from: $1.date)!}
