@@ -20,6 +20,10 @@ struct CommentView: View {
                         .resizable()
                         .scaledToFill()
                         .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color("Yellow"), lineWidth: 1)
+                        )
                         .frame(width: 50, height: 50)
                     Text(modelData.users.first(where: {$0.id == post.userId})?.username ?? "Username Error")
                         .foregroundColor(.primary) +

@@ -13,11 +13,25 @@ struct SignIn: View {
     @State private var password = ""
     var body: some View {
         VStack {
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 420)
+                .ignoresSafeArea()
             Spacer()
-            TextField("Username", text: $username)
-            SecureField("Password", text: $password)
-            Button("Forgot your password?") {
-                modelData.showReset()
+            VStack {
+                TextField("Username", text: $username)
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+                Divider()
+                    .padding(.horizontal)
+                Spacer()
+                    .frame(height: 10)
+                SecureField("Password", text: $password)
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+                Divider()
+                    .padding(.horizontal)
             }
             Spacer()
             Button("Sign In"){
@@ -25,10 +39,22 @@ struct SignIn: View {
                     await modelData.signIn(username: username, password: password)
                 }
             }
+            .font(.title2)
+            .padding()
+            .foregroundColor(Color("Yellow"))
+            .background(Color("Blue"))
+            .clipShape(Capsule())
             Spacer()
+            Button("Forgot your password?") {
+                modelData.showReset()
+            }
+            .border(.clear)
+            Spacer()
+                .frame(height: 10)
             Button("Don't have an account? Sign up.") {
                 modelData.showSignUp()
             }
+            .border(.clear)
         }
     }
 }

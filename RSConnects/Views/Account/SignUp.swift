@@ -17,11 +17,44 @@ struct SignUp: View {
     @State private var text1 = ""
     var body: some View {
         VStack {
-            TextField("Username", text: $username)
-            TextField("Email", text: $email)
-            iPhoneNumberField("Phone Number", text: $phone)
-                .maximumDigits(10)
-            SecureField("Password", text: $password)
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 420)
+                .ignoresSafeArea()
+            Spacer()
+            VStack {
+                VStack {
+                    TextField("Username", text: $username)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                    Divider()
+                        .padding(.horizontal)
+                    Spacer()
+                        .frame(height: 10)
+                }
+                VStack {
+                    TextField("Email", text: $email)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                    Divider()
+                        .padding(.horizontal)
+                    Spacer()
+                        .frame(height: 10)
+                }
+                iPhoneNumberField("Phone Number", text: $phone) //NEEDS HELP
+                    .maximumDigits(10)
+                    .padding(.horizontal)
+                Divider()
+                    .padding(.horizontal)
+                Spacer()
+                    .frame(height: 10)
+                SecureField("Password", text: $password)
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+                Divider()
+                    .padding(.horizontal)
+            }
             Text(text1)
             Button("Sign Up") {
                 if password.count < 8 {
@@ -32,6 +65,12 @@ struct SignUp: View {
                     }
                 }
             }
+            .font(.title2)
+            .padding()
+            .foregroundColor(Color("Yellow"))
+            .background(Color("Blue"))
+            .clipShape(Capsule())
+            Spacer()
             Button("Already have an account? Sign in.") {
                 modelData.showSignIn()
             }

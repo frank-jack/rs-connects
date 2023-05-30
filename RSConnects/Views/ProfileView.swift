@@ -47,6 +47,10 @@ struct ProfileView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color("Yellow"), lineWidth: 1)
+                                )
                                 .frame(width: 300, height: 300)
                         }
                         .onChange(of: selectedItem) { newItem in
