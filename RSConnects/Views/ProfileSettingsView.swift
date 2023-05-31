@@ -16,7 +16,7 @@ struct ProfileSettingsView: View {
             Form {
                 if modelData.profile.isAdmin {
                     Section(header: Text("Admin Features")) {
-                        NavigationLink(destination: TextView(), label: {Label("Text Congregants", systemImage: "text.bubble")})
+                        NavigationLink(destination: TextView(), label: {Label("Message Congregants", systemImage: "text.bubble")})
                     }
                 }
                 Section {
@@ -39,7 +39,21 @@ struct ProfileSettingsView: View {
                         Button(role: .destructive) {
                             if deleteText == "delete" {
                                 modelData.deleteUserData(profile: modelData.profile)
+                                var ids = [String]()
+                                for i in modelData.posts {
+                                    if i.userId == modelData.profile.id {
+                                        modelData.deletePostData(post: i)
+                                        ids.append(i.id)
+                                    }
+                                }
+                                for i in modelData.posts {
+                                    if ids.contains(i.groupId) {
+                                        modelData.deletePostData(post: i)
+                                    }
+                                }
                                 Task {
+                                    modelData.showApp = false
+                                    await modelData.deleteUser()
                                     await modelData.signOutGlobally()
                                 }
                             }

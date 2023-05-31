@@ -130,13 +130,13 @@ struct TextView: View {
                         } else if message.count == 0 {
                             Text("No message has been written...")
                         } else {
-                            Text("Are you sure you want to send this message to these congregants?")
+                            Text("Are you sure you want to send this message as a push notification to these congregants?")
                         }
                     })
                 }
             }
         }
-        .navigationTitle("Text Congregants")
+        .navigationTitle("Message Congregants")
     }
 }
 

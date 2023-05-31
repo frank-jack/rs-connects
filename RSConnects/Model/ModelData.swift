@@ -591,16 +591,16 @@ final class ModelData: ObservableObject {
             print("Unexpected error: \(error)")
         }
     }
-    /*func fetchCurrentAuthSession() async {
+    func deleteUser() async {
         do {
-            let session = try await Amplify.Auth.fetchAuthSession()
-            print("Is user signed in - \(session.isSignedIn)")
+            try await Amplify.Auth.deleteUser()
+            print("Successfully deleted user")
         } catch let error as AuthError {
-            print("Fetch session failed with error \(error)")
+            print("Delete user failed with error \(error)")
         } catch {
             print("Unexpected error: \(error)")
         }
-    }*/
+    }
     func setUpUser() {
         Task {
             do {

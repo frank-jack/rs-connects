@@ -4,7 +4,9 @@ import sys
 import os
 import ast
 
-sns = boto3.client('sns')
+tableName = os.environ['STORAGE_RSCONNECTSGROUPSTORAGE_NAME']
+dynamodb = boto3.resource('dynamodb')
+arnData = dynamodb.Table(tableName)
 
 def handler(event, context):
   print('received event:')
