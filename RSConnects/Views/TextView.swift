@@ -100,11 +100,11 @@ struct TextView: View {
                         }
                         if selectedUsers.count > 0 && message.count > 0 {
                             Button("Confirm") {
-                                var pn = [String]()
+                                var tokens = [String]()
                                 for i in selectedUsers {
-                                    pn.append(i.phone.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: ""))
+                                    tokens.append(i.token)
                                 }
-                                let params = ["phoneNumbers": pn.description, "message": message] as! Dictionary<String, String>
+                                let params = ["tokens": tokens.description, "message": message] as! Dictionary<String, String>
                                 var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/texts")!)
                                 request.httpMethod = "POST"
                                 request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])

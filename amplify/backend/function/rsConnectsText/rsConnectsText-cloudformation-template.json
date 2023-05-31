@@ -27,18 +27,6 @@
     "storageRSConnectsARNStorageStreamArn": {
       "Type": "String",
       "Default": "storageRSConnectsARNStorageStreamArn"
-    },
-    "storageRSConnectsUserDataStorageName": {
-      "Type": "String",
-      "Default": "storageRSConnectsUserDataStorageName"
-    },
-    "storageRSConnectsUserDataStorageArn": {
-      "Type": "String",
-      "Default": "storageRSConnectsUserDataStorageArn"
-    },
-    "storageRSConnectsUserDataStorageStreamArn": {
-      "Type": "String",
-      "Default": "storageRSConnectsUserDataStorageStreamArn"
     }
   },
   "Conditions": {
@@ -102,15 +90,6 @@
             },
             "STORAGE_RSCONNECTSARNSTORAGE_STREAMARN": {
               "Ref": "storageRSConnectsARNStorageStreamArn"
-            },
-            "STORAGE_RSCONNECTSUSERDATASTORAGE_NAME": {
-              "Ref": "storageRSConnectsUserDataStorageName"
-            },
-            "STORAGE_RSCONNECTSUSERDATASTORAGE_ARN": {
-              "Ref": "storageRSConnectsUserDataStorageArn"
-            },
-            "STORAGE_RSCONNECTSUSERDATASTORAGE_STREAMARN": {
-              "Ref": "storageRSConnectsUserDataStorageStreamArn"
             }
           }
         },
@@ -222,39 +201,6 @@
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:Get*",
-                "dynamodb:BatchGetItem",
-                "dynamodb:List*",
-                "dynamodb:Describe*",
-                "dynamodb:Scan",
-                "dynamodb:Query",
-                "dynamodb:Update*",
-                "dynamodb:RestoreTable*",
-                "dynamodb:Delete*"
-              ],
-              "Resource": [
-                {
-                  "Ref": "storageRSConnectsUserDataStorageArn"
-                },
-                {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      {
-                        "Ref": "storageRSConnectsUserDataStorageArn"
-                      },
-                      "index/*"
-                    ]
-                  ]
-                }
-              ]
-            },
             {
               "Effect": "Allow",
               "Action": [

@@ -15,6 +15,30 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "storageRSConnectsARNStorageName": {
+      "Type": "String",
+      "Default": "storageRSConnectsARNStorageName"
+    },
+    "storageRSConnectsARNStorageArn": {
+      "Type": "String",
+      "Default": "storageRSConnectsARNStorageArn"
+    },
+    "storageRSConnectsARNStorageStreamArn": {
+      "Type": "String",
+      "Default": "storageRSConnectsARNStorageStreamArn"
+    },
+    "storageRSConnectsUserDataStorageName": {
+      "Type": "String",
+      "Default": "storageRSConnectsUserDataStorageName"
+    },
+    "storageRSConnectsUserDataStorageArn": {
+      "Type": "String",
+      "Default": "storageRSConnectsUserDataStorageArn"
+    },
+    "storageRSConnectsUserDataStorageStreamArn": {
+      "Type": "String",
+      "Default": "storageRSConnectsUserDataStorageStreamArn"
     }
   },
   "Conditions": {
@@ -69,6 +93,24 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_RSCONNECTSARNSTORAGE_NAME": {
+              "Ref": "storageRSConnectsARNStorageName"
+            },
+            "STORAGE_RSCONNECTSARNSTORAGE_ARN": {
+              "Ref": "storageRSConnectsARNStorageArn"
+            },
+            "STORAGE_RSCONNECTSARNSTORAGE_STREAMARN": {
+              "Ref": "storageRSConnectsARNStorageStreamArn"
+            },
+            "STORAGE_RSCONNECTSUSERDATASTORAGE_NAME": {
+              "Ref": "storageRSConnectsUserDataStorageName"
+            },
+            "STORAGE_RSCONNECTSUSERDATASTORAGE_ARN": {
+              "Ref": "storageRSConnectsUserDataStorageArn"
+            },
+            "STORAGE_RSCONNECTSUSERDATASTORAGE_STREAMARN": {
+              "Ref": "storageRSConnectsUserDataStorageStreamArn"
             }
           }
         },
@@ -160,6 +202,91 @@
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageRSConnectsUserDataStorageArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageRSConnectsUserDataStorageArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageRSConnectsARNStorageArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageRSConnectsARNStorageArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

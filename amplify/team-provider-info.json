@@ -31,11 +31,11 @@
         },
         "rsConnectsCalendar": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsCalendar-4d456854662f5767564f-build.zip"
+          "s3Key": "amplify-builds/rsConnectsCalendar-78487a49376159496931-build.zip"
         },
         "rsConnectsText": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",
-          "s3Key": "amplify-builds/rsConnectsText-62326d546d6859325245-build.zip"
+          "s3Key": "amplify-builds/rsConnectsText-4e643543353432762b41-build.zip"
         },
         "rsconnects01c06141": {
           "deploymentBucketName": "amplify-rsconnects-dev-112010-deployment",

@@ -85,12 +85,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "dependsOn": []
-    },
-    "rsConnectsText": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
@@ -101,6 +95,22 @@
             "StreamArn"
           ]
         },
+        {
+          "category": "storage",
+          "resourceName": "RSConnectsARNStorage",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
+    },
+    "rsConnectsText": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
         {
           "category": "storage",
           "resourceName": "RSConnectsARNStorage",

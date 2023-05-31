@@ -368,6 +368,9 @@ final class ModelData: ObservableObject {
                             }
                         }
                         self.profile = Profile(id: id, email: email, phone: phone, username: username, image: await getImage(imageKey: id), isAdmin: isAdmin, token: mainToken)
+                        if let i = self.users.first(where: {$0.id == id}) {
+                            putUserData(profile: Profile(id: i.id, email: i.email, phone: i.phone, username: i.username, image: i.image, isAdmin: i.isAdmin, token: mainToken))
+                        }
                     }
                 }
             } catch {

@@ -76,6 +76,9 @@ struct ContentView: View {
             .onAppear() {
                 modelData.setUpUser()
             }
+            .onChange(of: mainToken) { newValue in
+                modelData.profile.token = mainToken
+            }
         }
     }
 }
