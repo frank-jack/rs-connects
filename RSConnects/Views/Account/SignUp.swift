@@ -60,8 +60,10 @@ struct SignUp: View {
                 if password.count < 8 {
                     text1 = "Password must be at least 8 characters"
                 } else {
+                    modelData.isLoading = true
                     Task {
                         await modelData.signUp(username: username, password: password, email: email, phone: phone)
+                        modelData.isLoading = false
                     }
                 }
             }

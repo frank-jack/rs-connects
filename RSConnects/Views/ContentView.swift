@@ -19,59 +19,63 @@ struct ContentView: View {
         case profile
     }
     var body: some View {
-        VStack {
-            if modelData.showApp {
-                VStack {
-                    TabView(selection: $selection) {
-                        UsersView()
-                            .tabItem {
-                                Label("Users", systemImage: "magnifyingglass")
-                            }
-                            .tag(Tab.users)
-                        GroupsView()
-                            .tabItem {
-                                Label("Groups", systemImage: "list.bullet")
-                            }
-                            .tag(Tab.groups)
-                        GeneralFeedView()
-                            .tabItem {
-                                Label("Feed", systemImage: "chart.bar.fill")
-                            }
-                            .tag(Tab.feed)
-                        CalendarView()
-                            .tabItem {
-                                Label("Calendar", systemImage: "calendar")
-                            }
-                            .tag(Tab.calendar)
-                        TabProfileView(profile: modelData.profile)
-                            .tabItem {
-                                Label("Profile", systemImage: "person.fill")
-                            }
-                            .tag(Tab.profile)
-                        
+        if modelData.isLoading {
+            LoadingView()
+        } else {
+            VStack {
+                if modelData.showApp {
+                    VStack {
+                        TabView(selection: $selection) {
+                            UsersView()
+                                .tabItem {
+                                    Label("Users", systemImage: "magnifyingglass")
+                                }
+                                .tag(Tab.users)
+                            GroupsView()
+                                .tabItem {
+                                    Label("Groups", systemImage: "list.bullet")
+                                }
+                                .tag(Tab.groups)
+                            GeneralFeedView()
+                                .tabItem {
+                                    Label("Feed", systemImage: "chart.bar.fill")
+                                }
+                                .tag(Tab.feed)
+                            CalendarView()
+                                .tabItem {
+                                    Label("Calendar", systemImage: "calendar")
+                                }
+                                .tag(Tab.calendar)
+                            TabProfileView(profile: modelData.profile)
+                                .tabItem {
+                                    Label("Profile", systemImage: "person.fill")
+                                }
+                                .tag(Tab.profile)
+                            
+                        }
                     }
-                }
-            } else {
-                NavigationStack {
-                    switch modelData.authState {
-                    case .signIn:
-                        SignIn()
-                            .environmentObject(modelData)
-                    case .signUp:
-                        SignUp()
-                            .environmentObject(modelData)
-                    case .reset:
-                        Reset()
-                            .environmentObject(modelData)
-                    case .session(let user):
-                        Session(user: user)
-                            .environmentObject(modelData)
+                } else {
+                    NavigationStack {
+                        switch modelData.authState {
+                        case .signIn:
+                            SignIn()
+                                .environmentObject(modelData)
+                        case .signUp:
+                            SignUp()
+                                .environmentObject(modelData)
+                        case .reset:
+                            Reset()
+                                .environmentObject(modelData)
+                        case .session(let user):
+                            Session(user: user)
+                                .environmentObject(modelData)
+                        }
                     }
                 }
             }
-        }
-        .onAppear() {
-            modelData.setUpUser()
+            .onAppear() {
+                modelData.setUpUser()
+            }
         }
     }
 }

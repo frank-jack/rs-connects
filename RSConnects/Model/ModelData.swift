@@ -24,6 +24,7 @@ final class ModelData: ObservableObject {
     @Published var users = [Profile]()
     @Published var showApp = false
     @Published var isEditing = ""
+    @Published var isLoading = false
     init() {
         getPostData()
         getGroupData()

@@ -33,6 +33,10 @@
 		146C6B072A1FC12300F18708 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B062A1FC12300F18708 /* AWSS3StoragePlugin */; };
 		146C6B092A1FC12300F18708 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B082A1FC12300F18708 /* Amplify */; };
 		146C6B0B2A1FC12300F18708 /* CoreMLPredictionsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B0A2A1FC12300F18708 /* CoreMLPredictionsPlugin */; };
+		146C6B462A269F6600F18708 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C6B452A269F6500F18708 /* LoadingView.swift */; };
+		146C6B482A26A04500F18708 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C6B472A26A04500F18708 /* LottieView.swift */; };
+		146C6B4A2A26A19600F18708 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 146C6B492A26A19600F18708 /* Loading.json */; };
+		146C6B4D2A26A26E00F18708 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 146C6B4C2A26A26E00F18708 /* Lottie */; };
 		14832A652A0A98D600F19B3C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A642A0A98D600F19B3C /* Session.swift */; };
 		14832A672A0A98EC00F19B3C /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A662A0A98EC00F19B3C /* SignIn.swift */; };
 		14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14832A682A0A98FC00F19B3C /* SignUp.swift */; };
@@ -86,6 +90,9 @@
 		1406D3952A129A6B0053DC84 /* TruePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruePostView.swift; sourceTree = "<group>"; };
 		1406D3972A12A0050053DC84 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		146C6AF12A1E5F9700F18708 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		146C6B452A269F6500F18708 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		146C6B472A26A04500F18708 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		146C6B492A26A19600F18708 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		14832A642A0A98D600F19B3C /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		14832A662A0A98EC00F19B3C /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		14832A682A0A98FC00F19B3C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				146C6B4D2A26A26E00F18708 /* Lottie in Frameworks */,
 				146C6AF72A1FC12300F18708 /* AWSAPIPlugin in Frameworks */,
 				146C6AFF2A1FC12300F18708 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				146C6AFD2A1FC12300F18708 /* AWSLocationGeoPlugin in Frameworks */,
@@ -151,6 +159,8 @@
 			children = (
 				1406D38F2A1284CA0053DC84 /* RefreshableScrollView.swift */,
 				14FFB4E72A1BC78700AD554E /* WebView.swift */,
+				146C6B472A26A04500F18708 /* LottieView.swift */,
+				146C6B492A26A19600F18708 /* Loading.json */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -255,6 +265,7 @@
 				1406D38A2A0D58380053DC84 /* ProfileSettingsView.swift */,
 				14FFB4E52A1BB1A300AD554E /* CalendarView.swift */,
 				146C6AF12A1E5F9700F18708 /* TextView.swift */,
+				146C6B452A269F6500F18708 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,6 +308,7 @@
 				146C6B062A1FC12300F18708 /* AWSS3StoragePlugin */,
 				146C6B082A1FC12300F18708 /* Amplify */,
 				146C6B0A2A1FC12300F18708 /* CoreMLPredictionsPlugin */,
+				146C6B4C2A26A26E00F18708 /* Lottie */,
 			);
 			productName = RSConnects;
 			productReference = 14CAD4CD2A09491800116B07 /* RSConnects.app */;
@@ -373,6 +385,7 @@
 			packageReferences = (
 				1406D39B2A13CED20053DC84 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				146C6B4B2A26A26D00F18708 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 14CAD4CE2A09491800116B07 /* Products */;
 			projectDirPath = "";
@@ -392,6 +405,7 @@
 			files = (
 				14CAD4D82A09491B00116B07 /* Preview Assets.xcassets in Resources */,
 				14CAD4D52A09491B00116B07 /* Assets.xcassets in Resources */,
+				146C6B4A2A26A19600F18708 /* Loading.json in Resources */,
 				F5A91608D7FA7C35A16B070C /* awsconfiguration.json in Resources */,
 				2F94A02E424089E63B551016 /* amplifyconfiguration.json in Resources */,
 			);
@@ -420,6 +434,7 @@
 			files = (
 				14832A692A0A98FC00F19B3C /* SignUp.swift in Sources */,
 				14832A6B2A0A990600F19B3C /* Reset.swift in Sources */,
+				146C6B482A26A04500F18708 /* LottieView.swift in Sources */,
 				14FFB4E62A1BB1A300AD554E /* CalendarView.swift in Sources */,
 				146C6AF22A1E5F9700F18708 /* TextView.swift in Sources */,
 				14832A652A0A98D600F19B3C /* Session.swift in Sources */,
@@ -429,6 +444,7 @@
 				1406D37B2A0BDCB60053DC84 /* GeneralFeedView.swift in Sources */,
 				14FFB4E82A1BC78700AD554E /* WebView.swift in Sources */,
 				1406D3872A0D47B40053DC84 /* ProfileView.swift in Sources */,
+				146C6B462A269F6600F18708 /* LoadingView.swift in Sources */,
 				1406D3892A0D56080053DC84 /* UsersView.swift in Sources */,
 				14CAD5072A095D1F00116B07 /* ModelData.swift in Sources */,
 				1406D3852A0D359F0053DC84 /* PostView.swift in Sources */,
@@ -800,6 +816,14 @@
 				kind = branch;
 			};
 		};
+		146C6B4B2A26A26D00F18708 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -862,6 +886,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 146C6AF52A1FC12300F18708 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = CoreMLPredictionsPlugin;
+		};
+		146C6B4C2A26A26E00F18708 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 146C6B4B2A26A26D00F18708 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -35,8 +35,10 @@ struct SignIn: View {
             }
             Spacer()
             Button("Sign In"){
+                modelData.isLoading = true
                 Task {
                     await modelData.signIn(username: username, password: password)
+                    modelData.isLoading = false
                 }
             }
             .font(.title2)
