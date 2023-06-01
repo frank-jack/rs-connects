@@ -27,42 +27,44 @@ struct ProfileSettingsView: View {
                     } label: {
                         Label("Sign Out", systemImage: "door.left.hand.open")
                     }
-                    Button {
-                        showDeleteConfirm = true
-                        deleteText = ""
-                    } label: {
-                        Label("Delete Account", systemImage: "trash")
-                            .foregroundColor(.red)
-                    }
-                    .alert("Delete Account", isPresented: $showDeleteConfirm, actions: {
-                        TextField("Type 'delete'...", text: $deleteText)
-                        Button(role: .destructive) {
-                            if deleteText == "delete" {
-                                modelData.deleteUserData(profile: modelData.profile)
-                                var ids = [String]()
-                                for i in modelData.posts {
-                                    if i.userId == modelData.profile.id {
-                                        modelData.deletePostData(post: i)
-                                        ids.append(i.id)
-                                    }
-                                }
-                                for i in modelData.posts {
-                                    if ids.contains(i.groupId) {
-                                        modelData.deletePostData(post: i)
-                                    }
-                                }
-                                Task {
-                                    modelData.showApp = false
-                                    await modelData.deleteUser()
-                                    await modelData.signOutGlobally()
-                                }
-                            }
+                    if modelData.profile.id != "" {
+                        Button {
+                            showDeleteConfirm = true
+                            deleteText = ""
                         } label: {
-                            Text("Delete")
+                            Label("Delete Account", systemImage: "trash")
+                                .foregroundColor(.red)
                         }
-                    }, message: {
-                        Text("Type 'delete' to confirm. This action cannot be undone.")
-                    })
+                        .alert("Delete Account", isPresented: $showDeleteConfirm, actions: {
+                            TextField("Type 'delete'...", text: $deleteText)
+                            Button(role: .destructive) {
+                                if deleteText == "delete" {
+                                    modelData.deleteUserData(profile: modelData.profile)
+                                    var ids = [String]()
+                                    for i in modelData.posts {
+                                        if i.userId == modelData.profile.id {
+                                            modelData.deletePostData(post: i)
+                                            ids.append(i.id)
+                                        }
+                                    }
+                                    for i in modelData.posts {
+                                        if ids.contains(i.groupId) {
+                                            modelData.deletePostData(post: i)
+                                        }
+                                    }
+                                    Task {
+                                        modelData.showApp = false
+                                        await modelData.deleteUser()
+                                        await modelData.signOutGlobally()
+                                    }
+                                }
+                            } label: {
+                                Text("Delete")
+                            }
+                        }, message: {
+                            Text("Type 'delete' to confirm. This action cannot be undone.")
+                        })
+                    }
                 }
             }
             .navigationTitle("Settings")

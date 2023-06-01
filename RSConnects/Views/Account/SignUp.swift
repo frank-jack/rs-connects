@@ -42,13 +42,13 @@ struct SignUp: View {
                     Spacer()
                         .frame(height: 10)
                 }
-                iPhoneNumberField("Phone Number", text: $phone) //NEEDS HELP
+                /*iPhoneNumberField("Phone Number", text: $phone)
                     .maximumDigits(10)
                     .padding(.horizontal)
                 Divider()
                     .padding(.horizontal)
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 10)*/
                 SecureField("Password", text: $password)
                     .padding(.horizontal)
                     .multilineTextAlignment(.center)

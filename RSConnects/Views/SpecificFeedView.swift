@@ -46,7 +46,7 @@ struct SpecificFeedView: View {
             }
             Divider()
                 .frame(height: 3)
-            if modelData.isEditing.count == 0 {
+            if modelData.isEditing.count == 0 && modelData.profile.id != "" {
                 VStack {
                     HStack {
                         TextField("Post in "+group.name+"...", text: $text, axis: .vertical)

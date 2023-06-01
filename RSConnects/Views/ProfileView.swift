@@ -41,7 +41,7 @@ struct ProfileView: View {
             }
             VStack {
                 RefreshableScrollView {
-                    if profile.id == modelData.profile.id {
+                    if profile.id == modelData.profile.id && modelData.profile.id != "" {
                         PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
                             Image(uiImage: profile.image)
                                 .resizable()
@@ -65,6 +65,10 @@ struct ProfileView: View {
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(Color("Yellow"), lineWidth: 1)
+                            )
                             .frame(width: 300, height: 300)
                     }
                     Spacer()

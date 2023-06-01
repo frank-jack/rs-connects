@@ -32,8 +32,8 @@ struct SignIn: View {
                     .multilineTextAlignment(.center)
                 Divider()
                     .padding(.horizontal)
+                Spacer()
             }
-            Spacer()
             Button("Sign In"){
                 modelData.isLoading = true
                 Task {
@@ -49,6 +49,13 @@ struct SignIn: View {
             Spacer()
             Button("Forgot your password?") {
                 modelData.showReset()
+            }
+            .border(.clear)
+            Spacer()
+                .frame(height: 10)
+            Button("Sign In as a Guest") {
+                modelData.profile = Profile.default
+                modelData.showApp = true
             }
             .border(.clear)
             Spacer()

@@ -115,25 +115,31 @@ struct TruePostView: View {
                     HStack {
                         Text(String(post.likes.count))
                             .foregroundColor(.gray)
-                        if !post.likes.contains(modelData.profile.id) {
+                        if modelData.profile.id == "" {
                             Button {
-                                var likes = post.likes
-                                likes.append(modelData.profile.id)
-                                modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
-                                post.likes = likes
                             } label: {
                                 Label("", systemImage: "heart")
                                     .foregroundColor(.gray)
                             }
                         } else {
-                            Button {
-                                var likes = post.likes
-                                likes.remove(at: likes.firstIndex(where: {$0 == modelData.profile.id})!)
-                                modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
-                                post.likes = likes
-                            } label: {
-                                Label("", systemImage: "heart.fill")
-                                    .foregroundColor(.pink)
+                            if !post.likes.contains(modelData.profile.id) {
+                                Button {
+                                    var likes = post.likes
+                                    likes.append(modelData.profile.id)
+                                    modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                                } label: {
+                                    Label("", systemImage: "heart")
+                                        .foregroundColor(.gray)
+                                }
+                            } else {
+                                Button {
+                                    var likes = post.likes
+                                    likes.remove(at: likes.firstIndex(where: {$0 == modelData.profile.id})!)
+                                    modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                                } label: {
+                                    Label("", systemImage: "heart.fill")
+                                        .foregroundColor(.pink)
+                                }
                             }
                         }
                         Text(String(numberOfComments))
@@ -173,7 +179,7 @@ struct TruePostView: View {
             }
             Divider()
                 .frame(height: 3)
-            if modelData.isEditing.count == 0 {
+            if modelData.isEditing.count == 0 && modelData.profile.id != "" {
                 HStack {
                     TextField("Comment on this post...", text: $text, axis: .vertical)
                         .focused($isFocused)

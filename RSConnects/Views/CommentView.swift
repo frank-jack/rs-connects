@@ -33,7 +33,7 @@ struct CommentView: View {
                 })
                 Spacer()
                 if modelData.profile.id == post.userId {
-                    if modelData.isEditing != post.id{
+                    if modelData.isEditing != post.id {
                         Menu {
                             Button {
                                 modelData.isEditing = post.id
@@ -90,23 +90,31 @@ struct CommentView: View {
                 HStack {
                     Text(String(post.likes.count))
                         .foregroundColor(.gray)
-                    if !post.likes.contains(modelData.profile.id) {
+                    if modelData.profile.id == "" {
                         Button {
-                            var likes = post.likes
-                            likes.append(modelData.profile.id)
-                            modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
                         } label: {
                             Label("", systemImage: "heart")
                                 .foregroundColor(.gray)
                         }
                     } else {
-                        Button {
-                            var likes = post.likes
-                            likes.remove(at: likes.firstIndex(where: {$0 == modelData.profile.id})!)
-                            modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
-                        } label: {
-                            Label("", systemImage: "heart.fill")
-                                .foregroundColor(.pink)
+                        if !post.likes.contains(modelData.profile.id) {
+                            Button {
+                                var likes = post.likes
+                                likes.append(modelData.profile.id)
+                                modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                            } label: {
+                                Label("", systemImage: "heart")
+                                    .foregroundColor(.gray)
+                            }
+                        } else {
+                            Button {
+                                var likes = post.likes
+                                likes.remove(at: likes.firstIndex(where: {$0 == modelData.profile.id})!)
+                                modelData.putPostData(post: Post(id: post.id, userId: post.userId, text: post.text, groupId: post.groupId, image: post.image, date: post.date, likes: likes))
+                            } label: {
+                                Label("", systemImage: "heart.fill")
+                                    .foregroundColor(.pink)
+                            }
                         }
                     }
                     Spacer()
