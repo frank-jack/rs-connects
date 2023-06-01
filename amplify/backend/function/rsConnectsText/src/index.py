@@ -23,24 +23,25 @@ def handler(event, context):
   print(body['tokens'])
   print(body['message'])
   for token in ast.literal_eval(body['tokens']):
-    response = getARNInfo(token)
-    print(response)
-    if len(response['Items']) == 0:
-        platformResponse = sns.create_platform_endpoint(
-            PlatformApplicationArn='arn:aws:sns:us-east-1:417990662395:app/APNS/RSConnects-PN',
-            Token=token,
+    if len(token) > 0:
+        response = getARNInfo(token)
+        print(response)
+        if len(response['Items']) == 0:
+            platformResponse = sns.create_platform_endpoint(
+                PlatformApplicationArn='arn:aws:sns:us-east-1:417990662395:app/APNS_SANDBOX/RSConnectPN',
+                Token=token,
+            )
+            arn = platformResponse['EndpointArn']
+            addARNInfo(token, arn)
+        else:
+            arn = response['Items'][0]['arn']
+        print(arn)
+        print(token)
+        response = sns.publish(
+            TargetArn=arn,
+            Message=body['message']
         )
-        arn = platformResponse['EndpointArn']
-        addARNInfo(token, arn)
-    else:
-        arn = response['Items'][0]['arn']
-    print(arn)
-    print(token)
-    response = sns.publish(
-        TargetArn=arn,
-        Message=body['message']
-    )
-    print(response)
+        print(response)
 
   return {
       'statusCode': 200,

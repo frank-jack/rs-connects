@@ -89,6 +89,7 @@
 		1406D3932A1290590053DC84 /* TabProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabProfileView.swift; sourceTree = "<group>"; };
 		1406D3952A129A6B0053DC84 /* TruePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruePostView.swift; sourceTree = "<group>"; };
 		1406D3972A12A0050053DC84 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		14208A6C2A2810CC009D78AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		146C6AF12A1E5F9700F18708 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		146C6B452A269F6500F18708 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		146C6B472A26A04500F18708 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 		14CAD4CF2A09491800116B07 /* RSConnects */ = {
 			isa = PBXGroup;
 			children = (
+				14208A6C2A2810CC009D78AA /* Info.plist */,
 				14CAD5022A095B3400116B07 /* Model */,
 				14CAD5052A095B6600116B07 /* Views */,
 				14CAD4D02A09491800116B07 /* RSConnectsApp.swift */,
@@ -623,6 +625,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RSConnects/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -662,6 +665,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RSConnects/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";

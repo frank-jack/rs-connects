@@ -368,9 +368,7 @@ final class ModelData: ObservableObject {
                             }
                         }
                         self.profile = Profile(id: id, email: email, phone: phone, username: username, image: await getImage(imageKey: id), isAdmin: isAdmin, token: mainToken)
-                        if let i = self.users.first(where: {$0.id == id}) {
-                            putUserData(profile: Profile(id: i.id, email: i.email, phone: i.phone, username: i.username, image: i.image, isAdmin: i.isAdmin, token: mainToken))
-                        }
+                        putUserData(profile: self.profile)
                     }
                 }
             } catch {
@@ -500,6 +498,9 @@ final class ModelData: ObservableObject {
                 )
             if signInResult.isSignedIn {
                 print("Sign in succeeded")
+                getPostData()
+                getGroupData()
+                getAllUserData()
                 await getUserData(id: try Amplify.Auth.getCurrentUser().userId)
             }
         } catch let error as AuthError {
