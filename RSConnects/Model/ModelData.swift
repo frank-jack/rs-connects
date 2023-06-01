@@ -26,9 +26,9 @@ final class ModelData: ObservableObject {
     @Published var isEditing = ""
     @Published var isLoading = false
     init() {
+        getAllUserData()
         getPostData()
         getGroupData()
-        getAllUserData()
     }
     
     func getImage(imageKey: String) async -> UIImage {
@@ -390,8 +390,8 @@ final class ModelData: ObservableObject {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
                 DispatchQueue.main.async { [self] in
-                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: profile.image, isAdmin: profile.isAdmin, token: profile.token))
-                    self.postImage(image: profile.image, imageKey: profile.id)
+                    self.users.append(Profile(id: profile.id, email: profile.email, phone: profile.phone, username: profile.username, image: UIImage(imageLiteralResourceName: "ProfilePic"), isAdmin: profile.isAdmin, token: profile.token))
+                    self.postImage(image: UIImage(imageLiteralResourceName: "ProfilePic"), imageKey: profile.id)
                 }
             } catch {
                 print("error")
@@ -498,9 +498,9 @@ final class ModelData: ObservableObject {
                 )
             if signInResult.isSignedIn {
                 print("Sign in succeeded")
+                getAllUserData()
                 getPostData()
                 getGroupData()
-                getAllUserData()
                 await getUserData(id: try Amplify.Auth.getCurrentUser().userId)
             }
         } catch let error as AuthError {
