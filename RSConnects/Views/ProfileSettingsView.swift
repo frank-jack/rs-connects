@@ -14,6 +14,14 @@ struct ProfileSettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section {
+                    Link(destination: URL(string: "https://rodephshalom.org/")!) {
+                        Label("Website", systemImage: "link")
+                    }
+                    Link(destination: URL(string: "https://www.freeprivacypolicy.com/live/3cbc3a03-bc64-4876-ae56-4aef46cc1fc0")!) {
+                        Label("Privacy Policy", systemImage: "p.square.fill")
+                    }
+                }
                 if modelData.profile.isAdmin {
                     Section(header: Text("Admin Features")) {
                         NavigationLink(destination: TextView(), label: {Label("Message Congregants", systemImage: "text.bubble")})
