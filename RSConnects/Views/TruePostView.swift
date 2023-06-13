@@ -90,6 +90,58 @@ struct TruePostView: View {
                                     .foregroundColor(.gray)
                             }
                         }
+                    } else {
+                        Menu {
+                            if modelData.profile.isAdmin {
+                                Button(role: .destructive) {
+                                    showDeleteAlert = true
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                            Button(role: .destructive) {
+                                var tokens = [String]()
+                                for i in modelData.users {
+                                    if i.isAdmin {
+                                        tokens.append(i.token)
+                                    }
+                                }
+                                let params = ["tokens": tokens.description, "message": "Post "+post.id+" has been reported by "+modelData.profile.username+"."] as! Dictionary<String, String>
+                                var request = URLRequest(url: URL(string: "https://lwo4s4n9a3.execute-api.us-east-1.amazonaws.com/dev/texts")!)
+                                request.httpMethod = "POST"
+                                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                                let session = URLSession.shared
+                                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                                    print(response!)
+                                    do {
+                                        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                                        print(json)
+                                    } catch {
+                                        print("error")
+                                    }
+                                })
+                                task.resume()
+                            } label: {
+                                Label("Report Post", systemImage: "exclamationmark.bubble")
+                            }
+                        } label: {
+                            Label("", systemImage: "ellipsis")
+                                .foregroundColor(.gray)
+                                .font(.title2)
+                        }
+                        .alert("Delete User's Post", isPresented: $showDeleteAlert, actions: {
+                            Button("Delete", role: .destructive, action: {
+                                modelData.deletePostData(post: post)
+                                for i in modelData.posts {
+                                    if i.groupId == post.id {
+                                        modelData.deletePostData(post: i)
+                                    }
+                                }
+                            })
+                        }, message: {
+                            Text("Are you sure you want to delete this user's post? This is an ADMIN ONLY ABILITY that cannot be reversed.")
+                        })
                     }
                 }
                 VStack {
