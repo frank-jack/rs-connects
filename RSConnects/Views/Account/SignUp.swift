@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-import iPhoneNumberField
+//import iPhoneNumberField
+
+var termsAgreed = false
 
 struct SignUp: View {
     @EnvironmentObject var modelData: ModelData
@@ -15,6 +17,7 @@ struct SignUp: View {
     @State private var email = ""
     @State private var phone = ""
     @State private var text1 = ""
+    @State private var showTerms = false
     var body: some View {
         VStack {
             Image("Logo")
@@ -54,16 +57,34 @@ struct SignUp: View {
                     .multilineTextAlignment(.center)
                 Divider()
                     .padding(.horizontal)
+                Toggle(isOn: $showTerms) {
+                    Text("Agree to Terms and Conditions")
+                }
+                .toggleStyle(CheckboxToggleStyle())
+                .alert("Agree to Terms and Conditions", isPresented: $showTerms, actions: {
+                    Button("Cancel") {
+                        termsAgreed = false
+                    }
+                    Button("Agree") {
+                        termsAgreed = true
+                    }
+                }, message: {
+                    Text("Do you agree to not create any content of a graphic variety or create any content which harms others?")
+                })
             }
             Text(text1)
             Button("Sign Up") {
                 if password.count < 8 {
                     text1 = "Password must be at least 8 characters"
                 } else {
-                    modelData.isLoading = true
-                    Task {
-                        await modelData.signUp(username: username, password: password, email: email, phone: phone)
-                        modelData.isLoading = false
+                    if termsAgreed {
+                        modelData.isLoading = true
+                        Task {
+                            await modelData.signUp(username: username, password: password, email: email, phone: phone)
+                            modelData.isLoading = false
+                        }
+                    } else {
+                        text1 = "Agree to terms and conditions"
                     }
                 }
             }
@@ -76,6 +97,31 @@ struct SignUp: View {
             Button("Already have an account? Sign in.") {
                 modelData.showSignIn()
             }
+        }
+    }
+}
+
+struct CheckboxToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+ 
+            RoundedRectangle(cornerRadius: 5.0)
+                .stroke(lineWidth: 2)
+                .frame(width: 25, height: 25)
+                .cornerRadius(5.0)
+                .overlay {
+                    if termsAgreed {
+                        Image(systemName: "checkmark")
+                    }
+                }
+                .onTapGesture {
+                    withAnimation(.spring()) {
+                        configuration.isOn.toggle()
+                    }
+                }
+ 
+            configuration.label
+ 
         }
     }
 }
