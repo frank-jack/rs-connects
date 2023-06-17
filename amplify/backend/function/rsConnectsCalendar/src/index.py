@@ -58,7 +58,7 @@ def handler(event, context):
                 response = getARNInfo(token)
                 if len(response['Items']) == 0:
                     platformResponse = sns.create_platform_endpoint(
-                        PlatformApplicationArn='arn:aws:sns:us-east-1:417990662395:app/APNS_SANDBOX/RSConnectPN',
+                        PlatformApplicationArn='arn:aws:sns:us-east-1:417990662395:app/APNS/RSConnects-PN',
                         Token=token,
                     )
                     arn = platformResponse['EndpointArn']
